@@ -22,3 +22,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/Acerca', 'webcontroller@about');
+
+Route::get ('/Contacto', 'webcontroller@contacto');
+

@@ -1,35 +1,27 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        @extends('layouts.app')
-    </head>
+      @extends('layouts.app')
       @section('content')
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
+
+
+                    <div style="background-color: #6b6b6b; height: 70vh;">
+                     <div class="container">
+                       <div class="row">
+                         <div class="col-8">
+                           <h1 style="font-weight: bold; color: #fff;padding-top:30% ;margin-bottom: 0;">BIENVENIDO A</h1>
+                           <h3 style="font-family: 'Slabo 27px', serif;color: #a10400;font-size: 56px;margin-bottom: 0;">VISION.</h3>
+                           <h3 style="font-family: 'Roboto', serif;color: #fff;font-size: 48px;font-weight: 100;line-height: 1em;margin: 0;">CALLCENTER</h3>
+                         </div>
+                         <div class="col-4">
+
+                         </div>
+                       </div>
+                     </div>
+                    </div>
+
+
+
+
+
+
       @endsection
-
-</html>
