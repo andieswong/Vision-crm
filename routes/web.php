@@ -27,3 +27,16 @@ Route::get('/Acerca', 'webcontroller@about');
 
 Route::get ('/Contacto', 'webcontroller@contacto');
 
+Route::get ('/Agentes', 'admincontroller@agentstable');
+
+Route::get ('/Dialer', 'admincontroller@dialerview');
+
+Route::get ('/Admin', 'admincontroller@admintools');
+
+Route::get ('/Ajustes', 'admincontroller@ajustesview');
+
+Route::get ('/Do_Request', 'admincontroller@doreq');
+
+//Route::get ('/Agentes', 'admincontroller@agentstable');
+
+

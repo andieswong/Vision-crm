@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container" style="padding-top: 100px;padding-bottom: 100px">
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ Auth::user()->name }}</div>
+                <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,8 +14,7 @@
                         </div>
                     @endif
 
-                    Bienvenido a Vision.Callcenter <br/>
-                    Tienes # notificaciones.
+                    You are logged in!
                 </div>
             </div>
         </div>

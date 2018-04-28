@@ -24,20 +24,18 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 </head>
 <body>
- <div style="background-color: #211a1e;" >
-
-
+ <div class="d-none d-md-block  " style="background-color: #211a1e;" >
   <div class="container"  >
     <div class="row">
       <div class="col-4">
       </div>
       <div class="col-4" style="text-align: center;">
-            <a style="font-family: 'Slabo 27px', serif; font-size: 30px; color: #ffffff;" >VISION.</a><br />      </div>
+            <a style="font-family: 'Slabo 27px', serif; font-size: 30px; color: #ffffff;" >VISION.</a>
+      </div>
       <div class="col-4">
       </div>
     </div>
   </div>
-
    </div>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel " style="background-color: #211a1e;">
@@ -53,6 +51,7 @@
                       <li><a class="nav-link" href="/Acerca" style="color: #ffffff;">Quienes somos</a></li>
                       <li><a class="nav-link" href="/Contacto" style="color: #ffffff;">Contacto</a></li>
                     </ul>
+
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -61,8 +60,8 @@
                             {{-- <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li> --}}
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" style="color: #ffffff" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span><img style="height: 50px;border-radius: 50px;" src="{{ Auth::user()->avatar }}"/>
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -70,6 +69,9 @@
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('home') }}">
+                                        {{ __('Dashboard') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -80,21 +82,24 @@
                         @endguest
                     </ul>
                 </div>
+                <a  class="d-none d-sm-block d-md-none" style="font-family: 'Slabo 27px', serif; font-size: 30px; color: #ffffff;" >VISION.</a>
+                <a  class="d-block d-sm-none" style="font-family: 'Slabo 27px', serif; font-size: 30px; color: #ffffff;" >VISION.</a>
             </div>
         </nav>
 
 
             @yield('content')
-        <div style="background-color: #211A1E;height: 20vh;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-6" style="color: #ffffff;text-align: left;padding-top: 100px;"><a>Todos los derechos son reservados a Vision callcenter.</a></div>
-                    {{--<div class="col-4"></div>--}}
-                    <div class="col-6" style="color: #ffffff;text-align: right; padding-top: 100px;"><a style="font-family: 'Slabo 27px', serif; font-size: 30px; color: #ffffff;margin-bottom: 0;">VISION.</a><a style="font-family: 'Roboto', serif;color: #fff;font-weight: 100;line-height: 1em;margin: 0;">callcenter</a></div>
-                </div>
-            </div>
-        </div>
+
 
     </div>
+ <div style="background-color: #211A1E;height: 20vh;">
+     <div class="container">
+         <div class="row">
+             <div class="col-6" style="color: #ffffff;text-align: left;padding-top: 100px;"><a>Todos los derechos son reservados a Vision callcenter.</a></div>
+             {{--<div class="col-4"></div>--}}
+             <div class="col-6" style="color: #ffffff;text-align: right; padding-top: 100px;"><a style="font-family: 'Slabo 27px', serif; font-size: 30px; color: #ffffff;margin-bottom: 0;">VISION.</a><a style="font-family: 'Roboto', serif;color: #fff;font-weight: 100;line-height: 1em;margin: 0;">callcenter</a></div>
+         </div>
+     </div>
+ </div>
 </body>
 </html>
