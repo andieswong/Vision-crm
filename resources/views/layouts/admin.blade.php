@@ -38,6 +38,7 @@
                 <!-- Left Side Of Navbar -->
                 {{--<a  class="" style="font-family: 'Slabo 27px', serif; font-size: 30px; color: #ffffff;" >VISION.</a>--}}
                 <ul class="navbar-nav mr-auto">
+                    <li><a class="nav-link" href="/Leads"  style="color: #ffffff;">Leads</a></li>
                     <li><a class="nav-link" href="/Agentes"  style="color: #ffffff;">Agentes</a></li>
                     <li><a class="nav-link" href="/Dialer" style="color: #ffffff;">Dialer</a></li>
                     <li><a class="nav-link" href="/Admin" style="color: #ffffff;">Admin</a></li>

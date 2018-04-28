@@ -27,7 +27,9 @@ Route::get('/Acerca', 'webcontroller@about');
 
 Route::get ('/Contacto', 'webcontroller@contacto');
 
-Route::get ('/Agentes', 'admincontroller@agentstable');
+Route::get ('/Leads', 'leadscontroller@leadsview');
+
+Route::get ('/Agentes', 'usercontroller@agentstable');
 
 Route::get ('/Dialer', 'admincontroller@dialerview');
 
@@ -37,6 +39,8 @@ Route::get ('/Ajustes', 'admincontroller@ajustesview');
 
 Route::get ('/Do_Request', 'admincontroller@doreq');
 
-//Route::get ('/Agentes', 'admincontroller@agentstable');
+Route::get ('/Agentes/Ver/{user}', 'usercontroller@agentsview');
+
+Route::get ('/Leads/Nuevo lead', 'leadscontroller@viewnewlead');
 
 

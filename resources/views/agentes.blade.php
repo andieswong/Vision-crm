@@ -8,9 +8,9 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-12">
+
             @forelse($users as $user)
-                <div class="col-6">
+                <div class="col-2">
                     <img class="img-thumbnail" src="{{ $user->avatar }}">
                     <p class="card-text">
                         {{ $user->user }}
@@ -18,9 +18,9 @@
                     </p>
                 </div>
             @empty
-                <p>No hay mensajes destacados.</p>
+                <p>No hay usuarios registrados.</p>
             @endforelse
-        </div>
+
     </div>
 </div>
 @endsection
