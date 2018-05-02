@@ -28,11 +28,11 @@
             @forelse($leads as $lead)
                 <tr>
                     <th scope="row">{{ $lead->id }}</th>
-                    <td>{{ $lead->nombre }}</td>
+                    <td><a href="/Leads/Ver/{{ $lead->id }}">{{ $lead->nombre }}</a></td>
                     <td>{{ $lead->direccion }}</td>
                     <td>{{ $lead->tel }}</td>
                     <td>{{ $lead->paq_ofrecido }}</td>
-                    <td>{{ $lead->user_id }}</td>
+                    <td><a href="/Agentes/Ver/{{ $lead->user->id }}">{{ $lead->user->name }}</a></td>
 
                 </tr>
             @empty
