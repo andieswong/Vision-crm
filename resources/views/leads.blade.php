@@ -47,6 +47,9 @@
                 <p>No hay leads registrados.</p>
 
                 @endif
+            @if(count($leads))
+                {{ $leads->links() }}
+                @endif
 
         </div>
     </div>

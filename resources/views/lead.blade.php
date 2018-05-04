@@ -163,8 +163,57 @@
                                     {{ __('Registrar    ') }}
                                 </button>
                             </div>
+
                         </div>
                     </form>
+
+                    {{--<div class="row>">--}}
+                        {{--<div class="col ">--}}
+                            {{--<a href="/Leads/Ver/Comentarios/{{ $lead->id }}" >Comentarios</a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+
+                    <div class="row">
+
+                        <div class="col" style="padding-top: 15px">
+                            <div class="card">
+                                <div class="card-header">
+                                    Comentarios
+                                </div>
+                                <div class="card-body">
+                            @if(count($lead->comments) > 0)
+
+
+                                        @foreach($lead->comments as $comment)
+                                            <div class="card" >
+                                                <div class="card-header">
+                                                    <p>{{ $comment->comment }} </p>
+
+                                                </div>
+
+                                                <p style="color: #606162">comentario por: {{ $comment->user->name }} Fecha:{{ $comment->created_at }}</p>
+
+                                            </div>
+                                            @endforeach
+
+
+                            @else
+                                <p>No hay comentarios registrados</p>
+                            @endif
+
+                                    <form method="post" action="" style="padding-top: 15px">
+                                        @csrf
+                                        <div class="form-group">
+                                            <div class="col">
+                                                <textarea id="comment" name="comment" class="form-control" placeholder="Comentario"></textarea><button type="submit" class="btn btn-primary">Comentar</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                        </div>
+                    </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

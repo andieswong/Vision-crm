@@ -47,4 +47,13 @@ Route::post ('/Leads/Nuevo lead', 'leadscontroller@addnewlead')->middleware('aut
 
 Route::get ('/Leads/Ver/{lead}', 'leadscontroller@leadview')->middleware('auth');
 
+Route::post ('/Leads/Ver/{lead}', 'leadscontroller@comment')->middleware('auth');
+
+Route::post ('/Leads/Nuevo comment', 'leadscontroller@addnewcomment')->middleware('auth');
+
+
+
+
+
+
 

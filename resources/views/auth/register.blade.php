@@ -120,7 +120,7 @@
 
                                 @if ($errors->has('avatar'))
                                     <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('avatar') }}</strong>
+                                        <strong>{{ $errors->first('avatar   ') }}</strong>
                                     </span>
                                 @endif
                             </div>

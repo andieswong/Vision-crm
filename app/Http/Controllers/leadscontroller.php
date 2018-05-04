@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateCommentRequest;
 use App\Http\Requests\CreateLeadRequest;
 use App\Lead;
+use App\comments_leads;
 use Illuminate\Http\Request;
 
 class leadscontroller extends Controller
 {
     public function leadsview()
     {
-        $leads = Lead::all();
+        $leads = Lead::paginate(20);
         return view('leads', [
             'leads' => $leads,
         ]);
@@ -51,16 +53,38 @@ class leadscontroller extends Controller
            'user_id' => $user->id,
        ]);
 
-       return view('leads');
+       return view('home');
     }
 
     public function leadview($id)
     {
-        $lead = Lead::find($id);
+        $lead = Lead::where('id' , $id)->first();
 
         return view('lead', [
             'lead' => $lead,
+
         ]);
+
+    }
+
+    public function comment($leadid, Request $request)
+    {
+        $user = $request ->user();
+        $lead = Lead::where('id' , $leadid)->first();
+
+        $comment = comments_leads::create([
+
+            'comment' => $request->input('comment'),
+            'user_id' => $user->id,
+            'lead_id' => $leadid
+
+        ]);
+
+        return view ('lead', [
+            'lead' => $lead
+        ]);
+
+
 
     }
 }
