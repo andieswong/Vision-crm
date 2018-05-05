@@ -5,7 +5,16 @@
 
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Modificar lead {{ $lead->id }}</div>
+                @if(session('success'))
+                    <span class="text-success">{{ session('success') }}</span>
+                    @endif
+                <div class="card-header">Modificar lead {{ $lead->id }} <a href="/Leads/Ver/{{ $lead->id }}/Seguimiento"><br/>Seguimiento por <span class="badge badge-dark">{{ $lead->followers->count() }}</span></a> @if(Auth::user()->isFollowing($lead))
+                            <form method="post" action="/Leads/DejardeSeguir/{{ $lead->id }}">@csrf<button class="btn btn-danger">Dejar de seguir</button></form>
+
+                        @else
+                            <form method="post" action="/Leads/Seguir/{{ $lead->id }}">@csrf<button class="btn btn-primary">Seguir cliente</button></form>
+
+                    @endif</div>
 
                 <div class="card-body">
                     <form method="POST" action="/Leads/Nuevo lead">
@@ -149,7 +158,7 @@
                         <div class="form-group row">
 
                             <div class="col">
-                                <textarea id="notas" type="text" class="form-control{{ $errors->has('notas') ? ' is-invalid' : '' }}" name="notas" value="" placeholder="notas  "  autofocus></textarea>
+                                <textarea id="notas" type="text" class="form-control{{ $errors->has('notas') ? ' is-invalid' : '' }}" name="notas" value="{{ $lead->notas }}" placeholder="notas  "  autofocus></textarea>
 
                             </div>
                         </div>

@@ -16,6 +16,19 @@
 
                     </p>
                 </div>
+        <div class="col-8">
+            <div class="card">
+                <div class="card-body">Clientes en seguimiento</div>
+            @foreach($user->follows as $follow)
+
+                    <div class="card-header">
+                        {{ $follow->nombre }}
+                    </div>
+
+
+                @endforeach
+            </div>
+        </div>
     </div>
 </div>
 @endsection

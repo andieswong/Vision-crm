@@ -68,6 +68,10 @@
                                     {{ __('Dashboard') }}
                                 </a>
 
+                                <a class="dropdown-item" href="/Agentes/Ver/{{ Auth::user()->user }}">
+                                    {{ __('Perfil') }}
+                                </a>
+
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>

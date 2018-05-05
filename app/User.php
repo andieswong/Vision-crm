@@ -26,5 +26,16 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function follows()
+    {
+        return $this->belongsToMany(Lead::class, 'user_leads' , 'user_id' , 'followed_id');
+    }
+
+    public function isFollowing(Lead $lead)
+    {
+        return $this->follows->contains($lead);
+    }
+
 }
 

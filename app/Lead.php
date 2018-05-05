@@ -20,4 +20,8 @@ class Lead extends Model
     {
        return $this->hasMany(comments_leads::class , 'lead_id');
     }
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'user_leads' , 'followed_id' , 'user_id');
+    }
 }

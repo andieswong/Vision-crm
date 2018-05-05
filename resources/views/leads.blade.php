@@ -32,7 +32,7 @@
                     <td>{{ $lead->direccion }}</td>
                     <td>{{ $lead->tel }}</td>
                     <td>{{ $lead->paq_ofrecido }}</td>
-                    <td><a href="/Agentes/Ver/{{ $lead->user->id }}">{{ $lead->user->name }}</a></td>
+                    <td><a href="/Agentes/Ver/{{ $lead->user->user }}">{{ $lead->user->name }}</a></td>
 
                 </tr>
             @empty

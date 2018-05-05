@@ -14,7 +14,7 @@
                     <img class="img-thumbnail" src="{{ $user->avatar }}">
                     <p class="card-text">
                         {{ $user->user }}
-                        <a href="/Agentes/Ver/{{ $user->id }}">Ver mas</a>
+                        <a href="/Agentes/Ver/{{ $user->user }}">Ver mas</a>
                     </p>
                 </div>
             @empty

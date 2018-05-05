@@ -87,4 +87,60 @@ class leadscontroller extends Controller
 
 
     }
+
+    public function uncomment($leadid, Request $request)
+    {
+        $user = $request ->user();
+        $lead = Lead::where('id' , $leadid)->first();
+
+        $comment = comments_leads::create([
+
+            'comment' => $request->input('comment'),
+            'user_id' => $user->id,
+            'lead_id' => $leadid
+
+        ]);
+
+        return view ('lead', [
+            'lead' => $lead
+        ]);
+
+
+
+    }
+
+    public function addfollow($leadid, Request $request)
+    {
+        $lead = Lead::find($leadid);
+        $me = $request->user();
+
+        $me->follows()->attach($lead);
+
+        return redirect("/Leads/Ver/$leadid")->withSuccess('Lead en Seguimiento');
+
+    }
+
+    public function unfollow($leadid, Request $request)
+    {
+        $lead = Lead::find($leadid);
+        $me = $request->user();
+
+        $me->follows()->detach($lead);
+
+        return redirect("/Leads/Ver/$leadid")->withSuccess('Lead liberado');
+    }
+
+    public function follows($leadid)
+    {
+        $lead = Lead::find($leadid);
+
+
+
+        return view('follows', [
+            'lead' => $lead,
+
+
+        ]);
+    }
+
 }

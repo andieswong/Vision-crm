@@ -14,11 +14,16 @@ class usercontroller extends Controller
             'users' => $users,
         ]);
     }
-    public function agentsview($id)
+    public function agentsview($username)
     {
-        $user = User::find($id);
+        $user =  User::where('user', $username)->first();
         return view('agente', [
             'user' => $user,
         ]);
+    }
+
+    public function followsview($username)
+    {
+     $user =  User::where('user', $username)->first();
     }
 }
