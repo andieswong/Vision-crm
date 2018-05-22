@@ -13,14 +13,17 @@ class admincontroller extends Controller
     {
         return view('dialer');
     }
-    public function ajustesview ()
+
+    public function ajustesview()
     {
         return view('ajustes');
     }
+
     public function admintools()
     {
         return view('admin');
     }
+
     public function doreq()
     {
         return view('doreq');

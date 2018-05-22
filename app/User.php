@@ -36,6 +36,10 @@ class User extends Authenticatable
     {
         return $this->follows->contains($lead);
     }
+    public function notifications()
+    {
+        return $this->hasMany(Notifications::class , 'user_id');
+    }
 
 }
 

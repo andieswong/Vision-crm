@@ -53,7 +53,7 @@ class leadscontroller extends Controller
            'user_id' => $user->id,
        ]);
 
-       return view('home');
+       return redirect('/Leads');
     }
 
     public function leadview($id)

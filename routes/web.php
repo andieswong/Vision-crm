@@ -42,6 +42,9 @@ Route::post ('/Leads/Ver/{lead}', 'leadscontroller@comment')->middleware('auth')
 Route::get ('/Leads', 'leadscontroller@leadsview')->middleware('auth');
 Route::get ('/Leads/Ver/{lead}/Seguimiento', 'leadscontroller@follows')->middleware('auth');
 
+Route::get ('/Notification', 'Notificationscontroller@index')->middleware('auth');
+Route::post ('/Notification', 'Notificationscontroller@create')->middleware('auth');
+
 
 
 
