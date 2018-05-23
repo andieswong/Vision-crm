@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\User;
 use Illuminate\Http\Request;
 
 class admincontroller extends Controller
@@ -26,6 +27,9 @@ class admincontroller extends Controller
 
     public function doreq()
     {
-        return view('doreq');
+        $users = User::all();
+        return view('notification', [
+            'users' => $users,
+        ]);
     }
 }

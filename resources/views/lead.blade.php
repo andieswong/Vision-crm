@@ -9,10 +9,10 @@
                     <span class="text-success">{{ session('success') }}</span>
                     @endif
                 <div class="card-header">Modificar lead {{ $lead->id }} <a href="/Leads/Ver/{{ $lead->id }}/Seguimiento"><br/>Seguimiento por <span class="badge badge-dark">{{ $lead->followers->count() }}</span></a> @if(Auth::user()->isFollowing($lead))
-                            <form method="post" action="/Leads/DejardeSeguir/{{ $lead->id }}">@csrf<button class="btn btn-danger">Dejar de seguir</button></form>
+                            <form method="post" style="display: inline" action="/Leads/DejardeSeguir/{{ $lead->id }}">@csrf<button class="btn btn-danger">Dejar de seguir</button></form>
 
                         @else
-                            <form method="post" action="/Leads/Seguir/{{ $lead->id }}">@csrf<button class="btn btn-primary">Seguir cliente</button></form>
+                            <form method="post" style="display: inline" action="/Leads/Seguir/{{ $lead->id }}">@csrf<button class="btn btn-primary">Seguir cliente</button></form>
 
                     @endif</div>
 
@@ -200,7 +200,11 @@
 
                                                 </div>
 
-                                                <p style="color: #606162">comentario por: {{ $comment->user->name }} Fecha:{{ $comment->created_at }}</p>
+                                                <p style="display: inline; color: #606162">comentario por: {{ $comment->user->name }} Fecha:{{ $comment->created_at }} </p>
+                                                <form method="post" action="/Lead/Remove/Comment/{{ $comment->id }}" style="display: inline">
+                                                    @csrf
+                                                    <button class="badge badge-danger">Eliminar</button>
+                                                </form>
 
                                             </div>
                                             @endforeach

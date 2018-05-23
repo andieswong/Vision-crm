@@ -33,6 +33,7 @@ class NotificationsController extends Controller
             'estado' => $request->input('estado'),
         ]);
 
+
         return redirect('/home');
     }
 
@@ -76,9 +77,15 @@ class NotificationsController extends Controller
      * @param  \App\Notifications  $notifications
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Notifications $notifications)
+    public function update($notificationid, Request $request, Notifications $notifications)
     {
-        //
+        $notification = $notifications::where('id', $notificationid)->first();
+
+        $notification->estado = $request->input('estado');
+
+        $notification->save();
+
+        return redirect('/Notifications');
     }
 
     /**
@@ -87,8 +94,19 @@ class NotificationsController extends Controller
      * @param  \App\Notifications  $notifications
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Notifications $notifications)
+    public function destroy($id, Request $request ,Notifications $notifications)
     {
-        //
+        $notification = $notifications::where('id', $id)->first();
+
+        $notification->delete();
+
+        return redirect('/Notifications');
+    }
+    public function center(Request $request)
+    {
+        $user = $request->user();
+        return view('notifications',[
+            'user' => $user,
+        ]);
     }
 }

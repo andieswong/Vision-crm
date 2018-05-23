@@ -88,22 +88,13 @@ class leadscontroller extends Controller
 
     }
 
-    public function uncomment($leadid, Request $request)
+    public function destroycomment($id, Request $request)
     {
-        $user = $request ->user();
-        $lead = Lead::where('id' , $leadid)->first();
+       $comment = comments_leads::where('id', $id)->first();
 
-        $comment = comments_leads::create([
+       $comment->delete();
 
-            'comment' => $request->input('comment'),
-            'user_id' => $user->id,
-            'lead_id' => $leadid
-
-        ]);
-
-        return view ('lead', [
-            'lead' => $lead
-        ]);
+       return redirect ('/Leads');
 
 
 

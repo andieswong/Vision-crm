@@ -15,7 +15,7 @@
                     @endif
 
                     Bienvenido a Vision.Callcenter <br/>
-                    Tienes # notificaciones.
+                        Tienes <a href="/Notifications"><span class="badge badge-danger">{{ $user->notifications->where('estado', 'activo')->count() }}</span> notificaciones.</a>
                 </div>
             </div>
         </div>
