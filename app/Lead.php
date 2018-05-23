@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Lead extends Model
 {
+    use Searchable;
+
     protected $fillable = [
         'nombre', 'direccion', 'ciudad', 'estado', 'tel','tel_adic', 'fecha_nac', 'ssn',
         'card', 'exp', 'code', 'servicio_ai', 'paq_ofrecido','tvs_inst', 'dvr', 'horario_inst' , 'descuento',
