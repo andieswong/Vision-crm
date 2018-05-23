@@ -7,12 +7,7 @@
        <div class="col-12">
          <h1 style="color: #a10400; font-weight: bold; padding-top:5% ;margin-bottom: 0;">QUIENES SOMOS?</h1>
            <br/>
-           <p>
-               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod elementum posuere. Proin diam mauris, finibus ac nunc at, congue tempus mi. Quisque rutrum tincidunt est.
-               Nulla a feugiat nibh. Vestibulum varius in justo non pretium. Etiam sed arcu vel orci consectetur suscipit ac vitae felis.
-               Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam imperdiet dolor nec gravida fermentum.
 
-           </p>
        </div>
      </div>
        <div class="row" style="padding-top: 15px;">
@@ -20,21 +15,22 @@
                 <h3>Mision</h3>
                  <img class=" d-none d-md-block" src="https://picsum.photos/300/200/?random">
                <p>
-                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod elementum posuere. Proin diam mauris, finibus ac nunc at, congue tempus mi.
+                   Ser socio principal de nuestros clientes en la prestación de servicios de call center, contando con excelencia en: calidad, RH y administración de nuestra empresa, esto se traduce en una sólida vocación de servicio al cliente.
+
                </p>
            </div>
            <div class="col-4">
                 <h3>Vision</h3>
                  <img class=" d-none d-md-block" src="https://picsum.photos/300/200/?random">
                <p>
-                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod elementum posuere. Proin diam mauris, finibus ac nunc at, congue tempus mi.
+                   Crecer junto a nuestros clientes con una relación a largo plazo, basándonos en la entrega de servicios de primer nivel, siendo un canal de comunicación eficiente y eficaz en la entrega de servicios a nuestros clientes, además de ser una empresa líder en el ramo del marketing.
                </p>
            </div>
            <div class="col-4">
                 <h3>Valores</h3>
                  <img class=" d-none d-md-block " src="https://picsum.photos/300/200/?random">
                <p>
-                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod elementum posuere. Proin diam mauris, finibus ac nunc at, congue tempus mi.
+                   Liderazgo, honestidad, Responsabilidad, Trabajo en Equipo, Confianza.
                </p>
            </div>
        </div>

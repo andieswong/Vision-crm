@@ -6,6 +6,7 @@ use App\Http\Requests\CreateCommentRequest;
 use App\Http\Requests\CreateLeadRequest;
 use App\Lead;
 use App\comments_leads;
+use App\Notifications;
 use Illuminate\Http\Request;
 
 class leadscontroller extends Controller
@@ -79,6 +80,23 @@ class leadscontroller extends Controller
             'lead_id' => $leadid
 
         ]);
+
+        $userstonotificate = $lead->followers();
+
+        dd($lead, $userstonotificate);
+
+        foreach ($userstonotificate as $usertonotificate)
+        {
+            $notification = Notifications::create([
+
+                'notification' => "Hay un nuevo comentario en el lead $lead->id que sigues actualmente",
+                'user_id' => $usertonotificate,
+                'estado' => 'activo'
+
+            ]);
+        }
+
+
 
         return view ('lead', [
             'lead' => $lead
