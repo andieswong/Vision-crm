@@ -54,4 +54,8 @@ Route::get ('/Ajustes/Puestos', 'ajustescontroller@puestosindex');
 Route::get ('/Ajustes/Puestos/Agregar', 'ajustescontroller@agregarpuestoindex');
 Route::post ('/Ajustes/Puestos/Agregar', 'ajustescontroller@agregarpuestocreate');
 
+Route::get ('/Ajustes/Equipos', 'ajustescontroller@equiposindex');
+Route::get ('/Ajustes/Equipos/Agregar', 'ajustescontroller@agregarequipoindex');
+Route::post ('/Ajustes/Equipos/Agregar', 'ajustescontroller@agregarequipocreate');
+
 

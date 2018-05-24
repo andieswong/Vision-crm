@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\puestos;
+use App\equipos;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -31,8 +32,10 @@ class usercontroller extends Controller
     public function addagentindex()
     {
         $puestos = puestos::all();
+        $equipos = equipos::all();
         return view('auth.registeragent', [
             'puestos' => $puestos,
+            'equipos' => $equipos
         ]);
     }
     public function addagentcreate(Request $request)

@@ -44,7 +44,11 @@
                             <label for="equipo" class="col-md-4 col-form-label text-md-right">{{ __('Equipo') }}</label>
 
                             <div class="col-md-6">
-                                <input id="equipo" type="text" class="form-control{{ $errors->has('equipo') ? ' is-invalid' : '' }}" name="equipo" value="{{ old('equipo') }}" required autofocus>
+                                <select class="form-control" name="puesto">
+                                    @foreach($equipos as $equipo)
+                                        <option value="{{ $equipo->equipo }}">{{ $equipo->equipo }}</option>
+                                    @endforeach
+                                </select>
 
                                 @if ($errors->has('equipo'))
                                     <span class="invalid-feedback">
