@@ -172,7 +172,7 @@ class leadscontroller extends Controller
         ]);
 
 
-        return redirect('/home');
+        return redirect('/Do_Request')->withSuccess('Notificacion enviada');
     }
     public function updatenotification($notificationid, Request $request, Notifications $notifications)
     {
