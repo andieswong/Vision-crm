@@ -155,5 +155,12 @@ class leadscontroller extends Controller
 
         ]);
     }
+    public function center(Request $request)
+    {
+        $user = $request->user();
+        return view('notifications',[
+            'user' => $user,
+        ]);
+    }
 
 }

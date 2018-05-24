@@ -43,9 +43,8 @@ Route::get ('/Leads', 'leadscontroller@leadsview')->middleware('auth');
 Route::get ('/Leads/Ver/{lead}/Seguimiento', 'leadscontroller@follows')->middleware('auth');
 Route::post ('/Lead/Remove/Comment/{commentid}', 'leadscontroller@destroycomment')->middleware('auth');
 
-Route::get ('/Notification', 'Notificationscontroller@index')->middleware('auth');
 Route::post ('/Notification', 'Notificationscontroller@create')->middleware('auth');
-Route::get ('/Notifications', 'Notificationscontroller@center')->middleware('auth');
+Route::get ('/Notifications', 'leadscontroller@center')->middleware('auth');
 Route::post ('/Notifications/Estado/{notificationid}', 'Notificationscontroller@update')->middleware('auth');
 Route::post ('/Notifications/Remove/{id}', 'Notificationscontroller@destroy')->middleware('auth');
 

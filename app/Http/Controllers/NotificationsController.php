@@ -102,11 +102,5 @@ class NotificationsController extends Controller
 
         return redirect('/Notifications');
     }
-    public function center(Request $request)
-    {
-        $user = $request->user();
-        return view('notifications',[
-            'user' => $user,
-        ]);
-    }
+
 }
