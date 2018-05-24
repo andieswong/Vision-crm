@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateNotificationRequest;
 use App\Http\Requests\CreateCommentRequest;
 use App\Http\Requests\CreateLeadRequest;
 use App\Lead;

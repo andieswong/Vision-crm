@@ -7,9 +7,10 @@
             <div class="card-header">Do Request</div>
             <div class="card-body">
             <form method="post" action="/Notification">
-                @csrf
+
                 <div class="form-group row">
                     <div class="col">
+                        @csrf
                         <input class="form-control" type="text" name="notification" placeholder="Notificacion">
                         <input class="form-control" type="hidden" name="estado" value="activo">
                     </div>
