@@ -162,5 +162,34 @@ class leadscontroller extends Controller
             'user' => $user,
         ]);
     }
+    public function createnotification(CreateNotificationRequest $request)
+    {
+        $notification = Notifications::create([
 
+            'notification' => $request->input('notification'),
+            'user_id' => $request->input('user'),
+            'estado' => $request->input('estado'),
+        ]);
+
+
+        return redirect('/home');
+    }
+    public function updatenotification($notificationid, Request $request, Notifications $notifications)
+    {
+        $notification = $notifications::where('id', $notificationid)->first();
+
+        $notification->estado = $request->input('estado');
+
+        $notification->save();
+
+        return redirect('/Notifications');
+    }
+    public function destroynotification($id, Request $request ,Notifications $notifications)
+    {
+        $notification = $notifications::where('id', $id)->first();
+
+        $notification->delete();
+
+        return redirect('/Notifications');
+    }
 }

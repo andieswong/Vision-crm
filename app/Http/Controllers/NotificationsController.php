@@ -24,18 +24,6 @@ class NotificationsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(CreateNotificationRequest $request)
-    {
-        $notification = Notifications::create([
-
-            'notification' => $request->input('notification'),
-            'user_id' => $request->input('user'),
-            'estado' => $request->input('estado'),
-        ]);
-
-
-        return redirect('/home');
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -77,16 +65,7 @@ class NotificationsController extends Controller
      * @param  \App\Notifications  $notifications
      * @return \Illuminate\Http\Response
      */
-    public function update($notificationid, Request $request, Notifications $notifications)
-    {
-        $notification = $notifications::where('id', $notificationid)->first();
 
-        $notification->estado = $request->input('estado');
-
-        $notification->save();
-
-        return redirect('/Notifications');
-    }
 
     /**
      * Remove the specified resource from storage.
@@ -94,13 +73,6 @@ class NotificationsController extends Controller
      * @param  \App\Notifications  $notifications
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, Request $request ,Notifications $notifications)
-    {
-        $notification = $notifications::where('id', $id)->first();
 
-        $notification->delete();
-
-        return redirect('/Notifications');
-    }
 
 }
