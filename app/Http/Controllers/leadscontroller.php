@@ -83,14 +83,18 @@ class leadscontroller extends Controller
 
         $userstonotificate = $lead->followers();
 
-        dd($lead, $userstonotificate);
 
-        foreach ($userstonotificate as $usertonotificate)
+
+
+
+        foreach ($lead->followers as $usern)
         {
+
+
             $notification = Notifications::create([
 
                 'notification' => "Hay un nuevo comentario en el lead $lead->id que sigues actualmente",
-                'user_id' => $usertonotificate,
+                'user_id' => "$usern->id",
                 'estado' => 'activo'
 
             ]);
