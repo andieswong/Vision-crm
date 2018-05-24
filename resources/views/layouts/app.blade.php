@@ -93,13 +93,13 @@
 
     </div>
  <div style="background-color: #211A1E;height: 20vh;">
-     <div class="container">
+
          <div class="row">
              <div class="col-6" style="color: #ffffff;text-align: left;padding-top: 100px;"><a>Todos los derechos son reservados a Vision callcenter.</a></div>
              {{--<div class="col-4"></div>--}}
              <div class="col-6" style="color: #ffffff;text-align: right; padding-top: 100px;"><a style="font-family: 'Slabo 27px', serif; font-size: 30px; color: #ffffff;margin-bottom: 0;">VISION.</a><a style="font-family: 'Roboto', serif;color: #fff;font-weight: 100;line-height: 1em;margin: 0;">callcenter</a></div>
          </div>
-     </div>
+
  </div>
 </body>
 </html>

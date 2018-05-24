@@ -3,8 +3,12 @@
 @section('content')
 <div class="container" style="padding-top: 100px;padding-bottom: 100px;">
     <div class="row">
+
         <div class="col-12">
-            <div class="card-header">Do Request</div>
+            <div class="card-header">Do Request  @if(session('success'))
+                    <span class="text-success">{{ session('success') }}</span>
+                @endif</div>
+
             <div class="card-body">
             <form method="post" action="/Notification">
 

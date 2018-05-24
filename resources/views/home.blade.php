@@ -15,7 +15,11 @@
                     @endif
 
                     Bienvenido a Vision.Callcenter <br/>
+                        @if($user->notifications->where('estado', 'activo')->count())
                         Tienes <a href="/Notifications"><span class="badge badge-danger">{{ $user->notifications->where('estado', 'activo')->count() }}</span> notificaciones.</a>
+                        @else
+                        No Tienes notificaciones activas, Buen dia.
+                        @endif
                 </div>
             </div>
         </div>

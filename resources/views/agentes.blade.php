@@ -3,8 +3,14 @@
 @section('content')
 <div class="container">
     <div class="row">
+
         <div class="col-4">
-            <h3>Agregar Agente</h3>
+            <br/>
+            <a  href="/Agentes/Agregar"><button class="btn btn-primary">Agregar agente</button></a>
+            @if(session('success'))
+                <span class="text-success">{{ session('success') }}</span>
+            @endif
+
         </div>
     </div>
     <div class="row">

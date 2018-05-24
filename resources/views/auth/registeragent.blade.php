@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container" style="padding-top: 30px; padding-bottom: 30px">
@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="/Agentes/Agregar">
                         @csrf
 
                         <div class="form-group row">
@@ -28,8 +28,11 @@
                             <label for="puesto" class="col-md-4 col-form-label text-md-right">{{ __('Puesto') }}</label>
 
                             <div class="col-md-6">
-                                <input id="puesto" type="text" class="form-control{{ $errors->has('puesto') ? ' is-invalid' : '' }}" name="puesto" value="{{ old('puesto') }}" required autofocus>
-
+                                <select class="form-control" name="puesto">
+                                    @foreach($puestos as $puesto)
+                                        <option value="{{ $puesto->puesto }}">{{ $puesto->puesto }}</option>
+                                        @endforeach
+                                </select>
                                 @if ($errors->has('puesto'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('puesto') }}</strong>

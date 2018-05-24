@@ -31,6 +31,8 @@ Route::get ('/Do_Request', 'admincontroller@doreq')->middleware('auth');
 Route::get ('/Agentes/Ver/{user}', 'usercontroller@agentsview')->middleware('auth');
 Route::get ('/Agentes/Ver/{user}/Siguiendo', 'usercontroller@followsview')->middleware('auth');
 Route::get ('/Agentes', 'usercontroller@agentstable')->middleware('auth');
+Route::get ('/Agentes/Agregar', 'usercontroller@addagentindex')->middleware('auth');
+Route::post ('/Agentes/Agregar', 'usercontroller@addagentcreate')->middleware('auth');
 
 Route::post ('/Leads/Seguir/{lead}', 'leadscontroller@addfollow')->middleware('auth');
 Route::post ('/Leads/DejardeSeguir/{lead}', 'leadscontroller@unfollow')->middleware('auth');
@@ -48,5 +50,8 @@ Route::get ('/Notifications', 'leadscontroller@center')->middleware('auth');
 Route::post ('/Notifications/Estado/{notificationid}', 'leadscontroller@updatenotification')->middleware('auth');
 Route::post ('/Notifications/Remove/{id}', 'leadscontroller@destroynotification')->middleware('auth');
 
+Route::get ('/Ajustes/Puestos', 'ajustescontroller@puestosindex');
+Route::get ('/Ajustes/Puestos/Agregar', 'ajustescontroller@agregarpuestoindex');
+Route::post ('/Ajustes/Puestos/Agregar', 'ajustescontroller@agregarpuestocreate');
 
 
