@@ -27,6 +27,7 @@ Route::get ('/Dialer', 'admincontroller@dialerview')->middleware('auth');
 Route::get ('/Admin', 'admincontroller@admintools')->middleware('auth');
 Route::get ('/Ajustes', 'admincontroller@ajustesview')->middleware('auth');
 Route::get ('/Do_Request', 'admincontroller@doreq')->middleware('auth');
+Route::get ('/Telefono', 'admincontroller@telview')->middleware('auth');
 
 Route::get ('/Agentes/Ver/{user}', 'usercontroller@agentsview')->middleware('auth');
 Route::get ('/Agentes/Ver/{user}/Siguiendo', 'usercontroller@followsview')->middleware('auth');

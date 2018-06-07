@@ -14,6 +14,10 @@ class admincontroller extends Controller
     {
         return view('dialer');
     }
+    public function telview()
+    {
+        return view('telefono');
+    }
 
     public function ajustesview()
     {
