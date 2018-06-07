@@ -30,7 +30,7 @@
                             <div class="col-md-6">
                                 <select class="form-control" name="puesto">
                                     @foreach($puestos as $puesto)
-                                        <option value="{{ $puesto->puesto }}">{{ $puesto->puesto }}</option>
+                                        <option value="{{ $puesto->id }}">{{ $puesto->puesto }}</option>
                                         @endforeach
                                 </select>
                                 @if ($errors->has('puesto'))
@@ -44,9 +44,9 @@
                             <label for="equipo" class="col-md-4 col-form-label text-md-right">{{ __('Equipo') }}</label>
 
                             <div class="col-md-6">
-                                <select class="form-control" name="puesto">
+                                <select class="form-control" name="equipo">
                                     @foreach($equipos as $equipo)
-                                        <option value="{{ $equipo->equipo }}">{{ $equipo->equipo }}</option>
+                                        <option value="{{ $equipo->id }}">{{ $equipo->equipo }}</option>
                                     @endforeach
                                 </select>
 
