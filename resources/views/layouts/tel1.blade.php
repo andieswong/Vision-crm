@@ -13,7 +13,10 @@
 
 
     <!-- Scripts -->
-
+    <script src="//cdn.sinch.com/latest/sinch.min.js"></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/pstn.js') }}" defer></script>
+    <script src="{{ asset('js/sinch.min.js') }}" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js" integrity="sha384-lZmvU/TzxoIQIOD9yQDEpvxp6wEU32Fy0ckUgOH4EIlMOCdR823rg4+3gWRwnX1M" crossorigin="anonymous"></script>
@@ -39,8 +42,8 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" style="background-color: #ffffff;border-radius: 15px;"></span>
                 @if(Auth::user()->notifications->where('estado', 'activo')->count())
-                    <span class="badge badge-danger">{{ Auth::user()->notifications->where('estado', 'activo')->count() }}</span>
-                @endif
+                <span class="badge badge-danger">{{ Auth::user()->notifications->where('estado', 'activo')->count() }}</span>
+                    @endif
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">

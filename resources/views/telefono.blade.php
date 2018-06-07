@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.tel1')
 
 @section('content')
 <div class="container" style="padding-top: 100px;padding-bottom: 100px;">
