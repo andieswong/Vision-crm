@@ -46,7 +46,7 @@ class User extends Authenticatable
     }
     public function rango()
     {
-        return $this->belongsToMany(puestos::class, 'equipos_users' , 'user_id' , 'puesto_id');
+        return $this->belongsToMany(puestos::class, 'puestos_users' , 'user_id' , 'puesto_id');
     }
 
 

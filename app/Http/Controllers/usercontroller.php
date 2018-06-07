@@ -21,8 +21,10 @@ class usercontroller extends Controller
     {
         $user =  User::where('user', $username)->first();
         $equipo=$user->integrar->first();
+        $rango=$user->rango->first();
         return view('agente', [
             'user' => $user,
+            'rango' => $rango,
             'equipo' => $equipo,
         ]);
     }

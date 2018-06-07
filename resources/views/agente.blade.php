@@ -7,8 +7,8 @@
                     <img style="border-radius: 15px;" class="img-thumbnail" src="{{ $user->avatar }}">
                     <p class="card-text">
                        Nombre: {{ $user->name }}<br/>
-                       Puesto: {{ $user->puesto }}<br/>
 
+                            Puesto: {{ $rango->puesto }}<br/>
                             Equipo:{{ $equipo->equipo }}<br/>
 
                        Usuario: {{ $user->user }}<br/>
