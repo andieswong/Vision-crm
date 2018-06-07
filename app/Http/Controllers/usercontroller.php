@@ -80,6 +80,11 @@ class usercontroller extends Controller
     public function destroyagent($id, Request $request)
     {
         $usertodestroy = User::find($id);
+        $teamtodetach = $usertodestroy->integrar->first();
+        $puestotodetach = $usertodestroy->rango->first();
+
+        $usertodestroy->integrar()->detach($teamtodetach);
+        $usertodestroy->rango()->detach($puestotodetach);
 
         $usertodestroy->delete();
 
