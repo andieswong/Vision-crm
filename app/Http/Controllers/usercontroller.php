@@ -17,11 +17,12 @@ class usercontroller extends Controller
             'users' => $users,
         ]);
     }
+
     public function agentsview($username)
     {
-        $user =  User::where('user', $username)->first();
-        $equipo=$user->integrar->first();
-        $rango=$user->rango->first();
+        $user = User::where('user', $username)->first();
+        $equipo = $user->integrar->first();
+        $rango = $user->rango->first();
         return view('agente', [
             'user' => $user,
             'rango' => $rango,
@@ -31,8 +32,9 @@ class usercontroller extends Controller
 
     public function followsview($username)
     {
-     $user =  User::where('user', $username)->first();
+        $user = User::where('user', $username)->first();
     }
+
     public function addagentindex()
     {
         $puestos = puestos::all();
@@ -42,6 +44,7 @@ class usercontroller extends Controller
             'equipos' => $equipos
         ]);
     }
+
     public function addagentcreate(Request $request)
     {
         $addagent = User::create([
@@ -57,20 +60,30 @@ class usercontroller extends Controller
         ]);
 
 
+        $userbymail = User::where('email', $request->input('email'))->first();
 
-        $userbymail= User::where('email', $request->input('email'))->first();
+        $userid = $userbymail->id;
 
-        $userid=$userbymail->id;
-
-        $user= User::find($userid);
-        $team= $request->input('equipo');
+        $user = User::find($userid);
+        $team = $request->input('equipo');
 
         $user->integrar()->attach($team);
 
-        $puesto= $request->input('puesto');
+        $puesto = $request->input('puesto');
 
         $user->rango()->attach($puesto);
 
         return redirect('/Agentes')->withSuccess('El agente se ha registrado.');
     }
+
+
+    public function destroyagent($id, Request $request)
+    {
+        $usertodestroy = User::find($id);
+
+        $usertodestroy->delete();
+
+        return redirect('/Agentes')->withSuccess('El agente se a eliminado');
+    }
+
 }

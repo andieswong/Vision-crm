@@ -34,6 +34,7 @@ Route::get ('/Agentes/Ver/{user}/Siguiendo', 'usercontroller@followsview')->midd
 Route::get ('/Agentes', 'usercontroller@agentstable')->middleware('auth');
 Route::get ('/Agentes/Agregar', 'usercontroller@addagentindex')->middleware('auth');
 Route::post ('/Agentes/Agregar', 'usercontroller@addagentcreate')->middleware('auth');
+Route::post ('/Agentes/Eliminar/{user}', 'usercontroller@destroyagent')->middleware('auth');
 
 Route::post ('/Leads/Seguir/{lead}', 'leadscontroller@addfollow')->middleware('auth');
 Route::post ('/Leads/DejardeSeguir/{lead}', 'leadscontroller@unfollow')->middleware('auth');
@@ -51,12 +52,12 @@ Route::get ('/Notifications', 'leadscontroller@center')->middleware('auth');
 Route::post ('/Notifications/Estado/{notificationid}', 'leadscontroller@updatenotification')->middleware('auth');
 Route::post ('/Notifications/Remove/{id}', 'leadscontroller@destroynotification')->middleware('auth');
 
-Route::get ('/Ajustes/Puestos', 'ajustescontroller@puestosindex');
-Route::get ('/Ajustes/Puestos/Agregar', 'ajustescontroller@agregarpuestoindex');
-Route::post ('/Ajustes/Puestos/Agregar', 'ajustescontroller@agregarpuestocreate');
+Route::get ('/Ajustes/Puestos', 'ajustescontroller@puestosindex')->middleware('auth');
+Route::get ('/Ajustes/Puestos/Agregar', 'ajustescontroller@agregarpuestoindex')->middleware('auth');
+Route::post ('/Ajustes/Puestos/Agregar', 'ajustescontroller@agregarpuestocreate')->middleware('auth');
 
-Route::get ('/Ajustes/Equipos', 'ajustescontroller@equiposindex');
-Route::get ('/Ajustes/Equipos/Agregar', 'ajustescontroller@agregarequipoindex');
-Route::post ('/Ajustes/Equipos/Agregar', 'ajustescontroller@agregarequipocreate');
+Route::get ('/Ajustes/Equipos', 'ajustescontroller@equiposindex')->middleware('auth');
+Route::get ('/Ajustes/Equipos/Agregar', 'ajustescontroller@agregarequipoindex')->middleware('auth');
+Route::post ('/Ajustes/Equipos/Agregar', 'ajustescontroller@agregarequipocreate')->middleware('auth');
 
 
