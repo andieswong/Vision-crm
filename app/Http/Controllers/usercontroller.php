@@ -20,8 +20,10 @@ class usercontroller extends Controller
     public function agentsview($username)
     {
         $user =  User::where('user', $username)->first();
+        $equipo=$user->integrar->first();
         return view('agente', [
             'user' => $user,
+            'equipo' => $equipo,
         ]);
     }
 
@@ -49,8 +51,23 @@ class usercontroller extends Controller
             'num_emp' => $request->input('num_emp'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
-            'avatar' => $request->input('name'),
+            'avatar' => $request->input('avatar'),
         ]);
+
+
+
+        $userbymail= User::where('email', $request->input('email'))->first();
+
+        $userid=$userbymail->id;
+
+        $user= User::find($userid);
+        $team= $request->input('equipo');
+
+        $user->integrar()->attach($team);
+
+        $puesto= $request->input('puesto');
+
+        $user->rango()->attach($puesto);
 
         return redirect('/Agentes')->withSuccess('El agente se ha registrado.');
     }

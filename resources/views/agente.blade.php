@@ -8,7 +8,9 @@
                     <p class="card-text">
                        Nombre: {{ $user->name }}<br/>
                        Puesto: {{ $user->puesto }}<br/>
-                       Equipo: {{ $user->equipo }}<br/>
+
+                            Equipo:{{ $equipo->equipo }}<br/>
+
                        Usuario: {{ $user->user }}<br/>
                        Numero: {{ $user->num_emp }}<br/>
                        Mail: {{ $user->email }}<br/>

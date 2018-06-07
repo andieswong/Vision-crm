@@ -40,6 +40,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(Notifications::class , 'user_id');
     }
+    public function integrar()
+    {
+        return $this->belongsToMany(equipos::class, 'equipos_users' , 'user_id' , 'team_id');
+    }
+    public function rango()
+    {
+        return $this->belongsToMany(puestos::class, 'equipos_users' , 'user_id' , 'puesto_id');
+    }
+
+
 
 }
 
