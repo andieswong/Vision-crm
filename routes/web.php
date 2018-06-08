@@ -60,4 +60,9 @@ Route::get ('/Ajustes/Equipos', 'ajustescontroller@equiposindex')->middleware('a
 Route::get ('/Ajustes/Equipos/Agregar', 'ajustescontroller@agregarequipoindex')->middleware('auth');
 Route::post ('/Ajustes/Equipos/Agregar', 'ajustescontroller@agregarequipocreate')->middleware('auth');
 
+Route::get ('/Ajustes/Niveles', 'ajustescontroller@nivelesindex')->middleware('auth');
+Route::get ('/Ajustes/Niveles/Agregar', 'ajustescontroller@agregarnivelindex')->middleware('auth');
+Route::post ('/Ajustes/Niveles/Agregar', 'ajustescontroller@agregarnivelcreate')->middleware('auth');
+Route::get ('/Ajustes/Niveles/{nivel}', 'ajustescontroller@nivel')->middleware('auth');
+
 

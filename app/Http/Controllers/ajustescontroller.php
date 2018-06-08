@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\equipos;
+use App\Levels;
 use App\puestos;
+use App\User;
 use Illuminate\Http\Request;
 
 class ajustescontroller extends Controller
@@ -51,5 +53,45 @@ class ajustescontroller extends Controller
         ]);
 
         return redirect('/Ajustes/Equipos/Agregar')->withSuccess('Equipo agregado correctamente');
+    }
+    public function nivelesindex()
+    {
+        $niveles = Levels::all();
+        return view('ajustes.niveles.niveles', [
+            'niveles' => $niveles
+        ]);
+    }
+    public function agregarnivelindex()
+    {
+        $niveles = Levels::all();
+        $usuarios = User::all();
+        return view('ajustes.niveles.agregarnivel', [
+            'niveles' => $niveles,
+            'usuarios' => $usuarios
+        ]);
+    }
+    public function agregarnivelcreate(Request $request)
+    {
+        $nivel = $request->input('nivel');
+        $userid = $request->input('usuario');
+
+        $user = User::find($userid);
+
+        $user->nivel()->attach($nivel);
+
+        return redirect('/Ajustes/Niveles/Agregar')->withSuccess('Nivel agregado correctamente');
+    }
+
+    public function nivel($level)
+    {
+        $nivel = Levels::where('level', $level)->first();
+
+        $integrantes = $nivel->integrantes;
+
+
+        return view('ajustes.niveles.nivel', [
+           'integrantes' => $integrantes,
+            'nivel' => $nivel
+        ]);
     }
 }

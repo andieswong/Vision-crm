@@ -48,6 +48,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(puestos::class, 'puestos_users' , 'user_id' , 'puesto_id');
     }
+    public function nivel()
+    {
+        return $this->belongsToMany(Levels::class, 'levels_users' , 'user_id' , 'level_id');
+    }
 
 
 
