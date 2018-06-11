@@ -18,9 +18,12 @@ class Checklevel
     public function handle($request, Closure $next)
     {
         $user = Auth::user();
-        if ($user->Level = 4) {
+        $level = $user->nivel()->first();
 
-            return redirect('home');
+
+        if ($level->id <= 3 ) {
+
+            return redirect('/Areadetrabajo');
         }
 
         return $next($request);

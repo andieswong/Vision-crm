@@ -8,10 +8,10 @@ class webcontroller extends Controller
 {
    public function about()
    {
-       return view('about');
+       return view('portada.about');
    }
    public function contacto()
    {
-       return view('contacto');
+       return view('portada.contacto');
    }
 }
