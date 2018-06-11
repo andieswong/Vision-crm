@@ -29,8 +29,7 @@ Route::get ('/Admin', 'admincontroller@admintools')->middleware('auth', 'level')
 Route::get ('/Ajustes', 'admincontroller@ajustesview')->middleware('auth', 'level');
 Route::get ('/Do_Request', 'admincontroller@doreq')->middleware('auth', 'level');
 
-Route::get ('/Agentes/Ver/{user}', 'usercontroller@agentsview')->middleware('auth', 'level');
-Route::get ('/Agentes/Ver/{user}/Siguiendo', 'usercontroller@followsview')->middleware('auth', 'level');
+
 Route::get ('/Agentes', 'usercontroller@agentstable')->middleware('auth', 'level');
 Route::get ('/Agentes/Agregar', 'usercontroller@addagentindex')->middleware('auth', 'level');
 Route::post ('/Agentes/Agregar', 'usercontroller@addagentcreate')->middleware('auth', 'level');
@@ -68,4 +67,9 @@ Route::post ('/Notifications/Estado/{notificationid}', 'leadscontroller@updateno
 Route::post ('/Notifications/Remove/{id}', 'leadscontroller@destroynotification')->middleware('auth');
 
 Route::get ('/Telefono', 'admincontroller@telview')->middleware('auth');
+
+Route::get ('/Agentes/Ver/{user}', 'usercontroller@agentsview')->middleware('auth');
+Route::get ('/Agentes/Ver/{user}/Siguiendo', 'usercontroller@followsview')->middleware('auth');
+
+Route::get ('/Areadetrabajo', 'agentcontroller@indexview')->middleware('auth');
 
