@@ -24,7 +24,7 @@ Route::get ('/Contacto', 'webcontroller@contacto');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth', 'level');
 
-Route::get ('/Dialer', 'admincontroller@dialerview')->middleware('auth', 'level');
+Route::get ('/Dialer', 'admincontroller@dialerview')->middleware('auth');
 Route::get ('/Admin', 'admincontroller@admintools')->middleware('auth', 'level');
 Route::get ('/Ajustes', 'admincontroller@ajustesview')->middleware('auth', 'level');
 Route::get ('/Do_Request', 'admincontroller@doreq')->middleware('auth', 'level');

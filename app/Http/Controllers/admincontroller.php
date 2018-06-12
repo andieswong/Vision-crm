@@ -16,7 +16,10 @@ class admincontroller extends Controller
     }
     public function telview()
     {
-        return view('telefono');
+        $needtel = 'si';
+        return view('telefono',[
+            'needtel' => $needtel
+        ]);
     }
 
     public function ajustesview()

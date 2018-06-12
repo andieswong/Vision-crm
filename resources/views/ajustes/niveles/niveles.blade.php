@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <br/><a href="/Ajustes/Niveles/Agregar" > <button class="btn btn-primary" >Agregar nivel a agente</button> </a><br/>
+                <br/><a href="/Ajustes/Niveles/Agregar" > <button class="btn btn-primary" >Modificar nivel a agente</button> </a><br/>
                 <div class="card-header">
                     Niveles
                 </div>

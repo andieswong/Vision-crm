@@ -77,6 +77,8 @@ class ajustescontroller extends Controller
 
         $user = User::find($userid);
 
+        $user->nivel()->detach();
+
         $user->nivel()->attach($nivel);
 
         return redirect('/Ajustes/Niveles/Agregar')->withSuccess('Nivel agregado correctamente');

@@ -150,6 +150,7 @@ class leadscontroller extends Controller
 
 
 
+
         return view('follows', [
             'lead' => $lead,
 
@@ -159,8 +160,10 @@ class leadscontroller extends Controller
     public function center(Request $request)
     {
         $user = $request->user();
+        $level = $user->nivel()->first();
         return view('notifications',[
             'user' => $user,
+            'level' => $level
         ]);
     }
     public function createnotification(CreateNotificationRequest $request)
