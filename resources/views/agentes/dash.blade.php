@@ -1,4 +1,4 @@
-@extends('layouts.agent')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container" style="padding-top: 100px;padding-bottom: 100px">
