@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class agentcontroller extends Controller
 {
-    public function index()
+    public function indexview(Request $request)
     {
-        return view ('agentes.dash');
+        $user = $request->user();
+
+
+        return view ('agentes.dash',[
+            'user' => $user,
+
+        ]);
     }
 }
