@@ -12,11 +12,14 @@ use Illuminate\Http\Request;
 
 class leadscontroller extends Controller
 {
-    public function leadsview()
+    public function leadsview(Request $request)
     {
         $leads = Lead::paginate(20);
+        $userid = $request->user()->id;
+        $leadsofuser = Lead::where('user_id', $userid)->get();
         return view('leads', [
             'leads' => $leads,
+            'leadsofuser' => $leadsofuser
         ]);
     }
     public function viewnewlead()
