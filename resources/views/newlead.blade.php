@@ -100,12 +100,18 @@
                         <div class="form-group row">
 
                             <div class="col">
-                                <input id="servicio_ai" type="text" class="form-control{{ $errors->has('servicio_ai') ? ' is-invalid' : '' }}" name="servicio_ai" value="" placeholder="Servicio Ofrecido"  autofocus>
-
+                                {{--<input id="servicio_ai" type="text" class="form-control{{ $errors->has('servicio_ai') ? ' is-invalid' : '' }}" name="servicio_ai" value="" placeholder="Servicio Ofrecido"  autofocus>--}}
+                                <select id="servicio_ai" class="form-control" name="servicio_ai">
+                                    <option value="Dish">Dish</option>
+                                    <option value="Dtv">Dtv</option>
+                                </select>
                             </div>
 
                             <div class="col">
-                                <input id="paq_ofrecido" type="text" class="form-control{{ $errors->has('paq_ofrecido') ? ' is-invalid' : '' }}" name="paq_ofrecido" value="" placeholder="Paquete ofrecido"  autofocus>
+                                {{--<input id="paq_ofrecido" type="text" class="form-control{{ $errors->has('paq_ofrecido') ? ' is-invalid' : '' }}" name="paq_ofrecido" value="" placeholder="Paquete ofrecido"  autofocus>--}}
+                                <select id="paq_ofrecido" class="form-control">
+                                    <option value=""
+                                </select>
 
                             </div>
 
