@@ -6,9 +6,9 @@
                 <div class="card card-header">Dialer</div>
                 <div class="card card-body" style="height: 70vh">
                 @if( Auth::user()->nivel->first()->id <= 3)
-                    <iframe src="http://192.200.118.66/" style="height: 100%;width: 100%"></iframe>
+                    <iframe src="http://192.200.118.66/agc/vicidial-grey.php?pl=&pp=&VD_login=&VD_pass=" style="height: 100%;width: 100%"></iframe>
                 @else
-                    <iframe src="http://146.71.124.114/vicidial/welcome.php" style="height: 100%;width: 100%"></iframe>
+                    <iframe src="http://192.200.118.66/vicidial/welcome.php" style="height: 100%;width: 100%"></iframe>
                 @endif
                 </div>
             </div>
