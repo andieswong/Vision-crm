@@ -52513,7 +52513,7 @@ var render = function() {
         return _c(
           "a",
           { staticClass: "dropdown-item", attrs: { href: "/Notifications" } },
-          [_vm._v("\n        Tienes un DoRequest\n    ")]
+          [_vm._v("\n        Tienes una notificacion.\n    ")]
         )
       })
     )

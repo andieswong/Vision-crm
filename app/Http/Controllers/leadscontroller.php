@@ -9,6 +9,7 @@ use App\Lead;
 use App\comments_leads;
 use App\Notifications;
 use App\Notifications\dorequest;
+use App\Notifications\leadcomment;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -104,6 +105,11 @@ class leadscontroller extends Controller
                 'estado' => 'activo'
 
             ]);
+
+            $userid = $usern->id;
+            $userstn = User::find($userid);
+            $me = $request->user();
+            $userstn->notify(new leadcomment($me));
         }
 
 

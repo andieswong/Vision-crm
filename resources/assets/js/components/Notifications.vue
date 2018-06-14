@@ -4,7 +4,7 @@
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
         <a class="dropdown-item" href="/Notifications" v-for="notification in notifications">
-            Tienes un DoRequest
+            Tienes una notificacion.
         </a>
     </div>
     </li>

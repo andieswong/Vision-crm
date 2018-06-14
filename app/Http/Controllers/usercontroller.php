@@ -94,7 +94,9 @@ class usercontroller extends Controller
     public function notifications(Request $request)
     {
         $user = $request->user();
-        $notifications = $user->notifications;
+        $notificationsstack = $user->notifications;
+        $notifications = $notificationsstack->where('estado', 'activo');
+
 
         return $notifications;
 
