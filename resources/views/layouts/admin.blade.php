@@ -20,7 +20,7 @@
     {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>--}}
     {{--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>--}}
     {{--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js" integrity="sha384-lZmvU/TzxoIQIOD9yQDEpvxp6wEU32Fy0ckUgOH4EIlMOCdR823rg4+3gWRwnX1M" crossorigin="anonymous"></script>--}}
-        <script src="{{ mix("js/app.js") }}"></script>
+
     <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:300' rel='stylesheet' type='text/css'>
@@ -38,10 +38,12 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{ asset('js/PSTNsample.js') }}" defer></script>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js" integrity="sha384-lZmvU/TzxoIQIOD9yQDEpvxp6wEU32Fy0ckUgOH4EIlMOCdR823rg4+3gWRwnX1M" crossorigin="anonymous"></script>
-        <!-- Fonts -->
+
+
+        {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>--}}
+        {{--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>--}}
+        {{--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js" integrity="sha384-lZmvU/TzxoIQIOD9yQDEpvxp6wEU32Fy0ckUgOH4EIlMOCdR823rg4+3gWRwnX1M" crossorigin="anonymous"></script>--}}
+        {{--<!-- Fonts -->--}}
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:300' rel='stylesheet' type='text/css'>
         <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -51,8 +53,8 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-
+        {{--<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">--}}
+        <link rel="stylesheet" href="{{ mix("css/app.css") }}">
         @endif
 
 
@@ -60,15 +62,15 @@
 <body>
 
 
-<div id="app">
+<div id="principal" >
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel " style="background-color: #211a1e;">
         <div class="container">
             <a  class="" style="font-family: 'Slabo 27px', serif; font-size: 30px; color: #ffffff;" >VISION.</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" style="background-color: #ffffff;border-radius: 15px;"></span>
-                @if(Auth::user()->notifications->where('estado', 'activo')->count())
-                    <span class="badge badge-danger">{{ Auth::user()->notifications->where('estado', 'activo')->count() }}</span>
-                @endif
+                {{--@if(Auth::user()->notifications->where('estado', 'activo')->count())--}}
+                    <notifications :user="{{ Auth::user()->id }}"></notifications>
+                {{--@endif--}}
             </button>
 
                 @if( Auth::user()->nivel()->first()->id <= 3)
@@ -88,7 +90,8 @@
                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                     <!-- Left Side Of Navbar -->
                                     {{--<a  class="" style="font-family: 'Slabo 27px', serif; font-size: 30px; color: #ffffff;" >VISION.</a>--}}
-                                    <ul class="navbar-nav mr-auto">
+
+
                                         <li><a class="nav-link" href="/Leads"  style="color: #ffffff;">Leads</a></li>
                                         <li><a class="nav-link" href="/Agentes"  style="color: #ffffff;">Agentes</a></li>
                                         <li><a class="nav-link" href="/Telefono"  style="color: #ffffff;">Telefono</a></li>
@@ -107,13 +110,14 @@
                         <li><a class="nav-link" href="{{ route('login') }}" style="color: #ffffff;">Iniciar Sesion  </a></li>
                         {{-- <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li> --}}
                     @else
+
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" style="color: #ffffff" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
-                                @if(Auth::user()->notifications->where('estado', 'activo')->count())
-                                    <span class="badge badge-danger">{{ Auth::user()->notifications->where('estado', 'activo')->count() }}</span>
-                                @endif
-                                <img style="height: 50px;border-radius: 50px;" src="{{ Auth::user()->avatar }}"/>
+
+                                {{--<notifications :user="{{ Auth::user()->id }}"></notifications>--}}
+
+
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -140,18 +144,25 @@
                                 </form>
                             </div>
                         </li>
+
+
+                            <notifications :user="{{ Auth::user()->id }}"></notifications>
+
+
                     @endguest
                 </ul>
             </div>
 
         </div>
+                    </div>
+        </div>
     </nav>
+
 
 
     @yield('content')
 
 
-</div>
 <div style="background-color: #211A1E;height: 10vh;">
     <div class="container">
         <div class="row">
@@ -159,5 +170,8 @@
         </div>
     </div>
 </div>
+
+</div>
 </body>
+<script src="{{ mix("js/app.js") }}"></script>
 </html>

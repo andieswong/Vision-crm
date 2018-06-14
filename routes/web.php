@@ -73,3 +73,6 @@ Route::get ('/Agentes/Ver/{user}/Siguiendo', 'usercontroller@followsview')->midd
 
 Route::get ('/Areadetrabajo', 'agentcontroller@indexview')->middleware('auth');
 
+Route::get ('/api/notifications', 'usercontroller@notifications')->middleware('auth');
+Route::get ('/api/notifications/count', 'usercontroller@notificationscount')->middleware('auth');
+

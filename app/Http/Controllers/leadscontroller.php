@@ -8,6 +8,8 @@ use App\Http\Requests\CreateLeadRequest;
 use App\Lead;
 use App\comments_leads;
 use App\Notifications;
+use App\Notifications\dorequest;
+use App\User;
 use Illuminate\Http\Request;
 
 class leadscontroller extends Controller
@@ -171,6 +173,8 @@ class leadscontroller extends Controller
     }
     public function createnotification(CreateNotificationRequest $request)
     {
+        $me = $request->user();
+
         $notification = Notifications::create([
 
             'notification' => $request->input('notification'),
@@ -178,6 +182,9 @@ class leadscontroller extends Controller
             'estado' => $request->input('estado'),
         ]);
 
+        $userid = $request->input('user');
+        $user = User::find($userid);
+        $user->notify(new dorequest($me));
 
         return redirect('/Do_Request')->withSuccess('Notificacion enviada');
     }

@@ -91,4 +91,21 @@ class usercontroller extends Controller
         return redirect('/Agentes')->withSuccess('El agente se a eliminado');
     }
 
+    public function notifications(Request $request)
+    {
+        $user = $request->user();
+        $notifications = $user->notifications;
+
+        return $notifications;
+
+    }
+    public function notificationscount(Request $request)
+    {
+        $user = $request->user();
+        $notifications = $user->notifications->count();
+
+        return $notifications;
+
+    }
+
 }
