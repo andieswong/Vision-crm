@@ -8,7 +8,6 @@ use Illuminate\Mail\Markdown;
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Contracts\Mail\Mailable;
 use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class MailChannel
 {
@@ -61,7 +60,7 @@ class MailChannel
 
         $this->mailer->send(
             $this->buildView($message),
-            array_merge($message->data(), $this->additionalMessageData($notification)),
+            $message->data(),
             $this->messageBuilder($notifiable, $notification, $message)
         );
     }
@@ -96,22 +95,6 @@ class MailChannel
         return [
             'html' => $this->markdown->render($message->markdown, $message->data()),
             'text' => $this->markdown->renderText($message->markdown, $message->data()),
-        ];
-    }
-
-    /**
-     * Get additional meta-data to pass along with the view data.
-     *
-     * @param  \Illuminate\Notifications\Notification  $notification
-     * @return array
-     */
-    protected function additionalMessageData($notification)
-    {
-        return [
-            '__laravel_notification' => get_class($notification),
-            '__laravel_notification_queued' => in_array(
-                ShouldQueue::class, class_implements($notification)
-            ),
         ];
     }
 
@@ -154,16 +137,12 @@ class MailChannel
 
         $mailMessage->to($this->getRecipients($notifiable, $notification, $message));
 
-        if (! empty($message->cc)) {
-            foreach ($message->cc as $cc) {
-                $mailMessage->cc($cc[0], Arr::get($cc, 1));
-            }
+        if ($message->cc) {
+            $mailMessage->cc($message->cc[0], Arr::get($message->cc, 1));
         }
 
-        if (! empty($message->bcc)) {
-            foreach ($message->bcc as $bcc) {
-                $mailMessage->bcc($bcc[0], Arr::get($bcc, 1));
-            }
+        if ($message->bcc) {
+            $mailMessage->bcc($message->bcc[0], Arr::get($message->bcc, 1));
         }
     }
 
@@ -181,9 +160,7 @@ class MailChannel
         }
 
         if (! empty($message->replyTo)) {
-            foreach ($message->replyTo as $replyTo) {
-                $mailMessage->replyTo($replyTo[0], Arr::get($replyTo, 1));
-            }
+            $mailMessage->replyTo($message->replyTo[0], Arr::get($message->replyTo, 1));
         }
     }
 
@@ -201,10 +178,8 @@ class MailChannel
             $recipients = [$recipients];
         }
 
-        return collect($recipients)->mapWithKeys(function ($recipient, $email) {
-            return is_numeric($email)
-                    ? [$email => (is_string($recipient) ? $recipient : $recipient->email)]
-                    : [$email => $recipient];
+        return collect($recipients)->map(function ($recipient) {
+            return is_string($recipient) ? $recipient : $recipient->email;
         })->all();
     }
 

@@ -5,8 +5,9 @@ namespace PhpParser\NodeVisitor;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\NodeTraverser;
+use PHPUnit\Framework\TestCase;
 
-class FirstFindingVisitorTest extends \PHPUnit\Framework\TestCase
+class FirstFindingVisitorTest extends TestCase
 {
     public function testFindFirstVariable() {
         $traverser = new NodeTraverser();
@@ -33,6 +34,6 @@ class FirstFindingVisitorTest extends \PHPUnit\Framework\TestCase
         $stmts = [new Node\Stmt\Expression($assign)];
 
         $traverser->traverse($stmts);
-        $this->assertNull($visitor->getFoundNode());
+        $this->assertSame(null, $visitor->getFoundNode());
     }
 }

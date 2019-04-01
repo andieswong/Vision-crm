@@ -27,15 +27,15 @@ abstract class AbstractFileExtractor
      */
     protected function extractFiles($resource)
     {
-        if (\is_array($resource) || $resource instanceof \Traversable) {
-            $files = [];
+        if (is_array($resource) || $resource instanceof \Traversable) {
+            $files = array();
             foreach ($resource as $file) {
                 if ($this->canBeExtracted($file)) {
                     $files[] = $this->toSplFileInfo($file);
                 }
             }
         } elseif (is_file($resource)) {
-            $files = $this->canBeExtracted($resource) ? [$this->toSplFileInfo($resource)] : [];
+            $files = $this->canBeExtracted($resource) ? array($this->toSplFileInfo($resource)) : array();
         } else {
             $files = $this->extractFromDirectory($resource);
         }
@@ -45,7 +45,7 @@ abstract class AbstractFileExtractor
 
     private function toSplFileInfo(string $file): \SplFileInfo
     {
-        return new \SplFileInfo($file);
+        return ($file instanceof \SplFileInfo) ? $file : new \SplFileInfo($file);
     }
 
     /**

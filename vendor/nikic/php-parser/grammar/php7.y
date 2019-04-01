@@ -240,8 +240,6 @@ non_empty_statement:
           { $$ = Stmt\Foreach_[$3, $5[0], ['keyVar' => null, 'byRef' => $5[1], 'stmts' => $7]]; }
     | T_FOREACH '(' expr T_AS variable T_DOUBLE_ARROW foreach_variable ')' foreach_statement
           { $$ = Stmt\Foreach_[$3, $7[0], ['keyVar' => $5, 'byRef' => $7[1], 'stmts' => $9]]; }
-    | T_FOREACH '(' expr error ')' foreach_statement
-          { $$ = Stmt\Foreach_[$3, new Expr\Error(stackAttributes(#4)), ['stmts' => $6]]; }
     | T_DECLARE '(' declare_list ')' declare_statement      { $$ = Stmt\Declare_[$3, $5]; }
     | T_TRY '{' inner_statement_list '}' catches optional_finally
           { $$ = Stmt\TryCatch[$3, $5, $6]; $this->checkTryCatch($$); }
@@ -297,14 +295,9 @@ optional_ellipsis:
     | T_ELLIPSIS                                            { $$ = true; }
 ;
 
-block_or_error:
-      '{' inner_statement_list '}'                          { $$ = $2; }
-    | error                                                 { $$ = []; }
-;
-
 function_declaration_statement:
-    T_FUNCTION optional_ref identifier '(' parameter_list ')' optional_return_type block_or_error
-        { $$ = Stmt\Function_[$3, ['byRef' => $2, 'params' => $5, 'returnType' => $7, 'stmts' => $8]]; }
+    T_FUNCTION optional_ref identifier '(' parameter_list ')' optional_return_type '{' inner_statement_list '}'
+        { $$ = Stmt\Function_[$3, ['byRef' => $2, 'params' => $5, 'returnType' => $7, 'stmts' => $9]]; }
 ;
 
 class_declaration_statement:
@@ -450,12 +443,10 @@ non_empty_parameter_list:
 ;
 
 parameter:
-      optional_type optional_ref optional_ellipsis plain_variable
+      optional_param_type optional_ref optional_ellipsis plain_variable
           { $$ = Node\Param[$4, null, $1, $2, $3]; $this->checkParam($$); }
-    | optional_type optional_ref optional_ellipsis plain_variable '=' expr
+    | optional_param_type optional_ref optional_ellipsis plain_variable '=' expr
           { $$ = Node\Param[$4, $6, $1, $2, $3]; $this->checkParam($$); }
-    | optional_type optional_ref optional_ellipsis error
-          { $$ = Node\Param[Expr\Error[], null, $1, $2, $3]; }
 ;
 
 type_expr:
@@ -469,7 +460,7 @@ type:
     | T_CALLABLE                                            { $$ = Node\Identifier['callable']; }
 ;
 
-optional_type:
+optional_param_type:
       /* empty */                                           { $$ = null; }
     | type_expr                                             { $$ = $1; }
 ;
@@ -477,7 +468,6 @@ optional_type:
 optional_return_type:
       /* empty */                                           { $$ = null; }
     | ':' type_expr                                         { $$ = $2; }
-    | ':' error                                             { $$ = null; }
 ;
 
 argument_list:
@@ -523,28 +513,20 @@ static_var:
     | plain_variable '=' expr                               { $$ = Stmt\StaticVar[$1, $3]; }
 ;
 
-class_statement_list_ex:
-      class_statement_list_ex class_statement               { if ($2 !== null) { push($1, $2); } }
+class_statement_list:
+      class_statement_list class_statement                  { push($1, $2); }
     | /* empty */                                           { init(); }
 ;
 
-class_statement_list:
-      class_statement_list_ex
-          { makeNop($nop, $this->lookaheadStartAttributes, $this->endAttributes);
-            if ($nop !== null) { $1[] = $nop; } $$ = $1; }
-;
-
 class_statement:
-      variable_modifiers optional_type property_declaration_list ';'
-          { $attrs = attributes();
-            $$ = new Stmt\Property($1, $3, $attrs, $2); $this->checkProperty($$, #1); }
+      variable_modifiers property_declaration_list ';'
+          { $$ = Stmt\Property[$1, $2]; $this->checkProperty($$, #1); }
     | method_modifiers T_CONST class_const_list ';'
           { $$ = Stmt\ClassConst[$3, $1]; $this->checkClassConst($$, #1); }
     | method_modifiers T_FUNCTION optional_ref identifier_ex '(' parameter_list ')' optional_return_type method_body
           { $$ = Stmt\ClassMethod[$4, ['type' => $1, 'byRef' => $3, 'params' => $6, 'returnType' => $8, 'stmts' => $9]];
             $this->checkClassMethod($$, #1); }
     | T_USE class_name_list trait_adaptations               { $$ = Stmt\TraitUse[$2, $3]; }
-    | error                                                 { $$ = null; /* will be skipped */ }
 ;
 
 trait_adaptations:
@@ -580,7 +562,7 @@ trait_method_reference:
 
 method_body:
       ';' /* abstract method */                             { $$ = null; }
-    | block_or_error                                        { $$ = $1; }
+    | '{' inner_statement_list '}'                          { $$ = $2; }
 ;
 
 variable_modifiers:
@@ -660,7 +642,6 @@ expr:
     | variable T_SL_EQUAL expr                              { $$ = Expr\AssignOp\ShiftLeft [$1, $3]; }
     | variable T_SR_EQUAL expr                              { $$ = Expr\AssignOp\ShiftRight[$1, $3]; }
     | variable T_POW_EQUAL expr                             { $$ = Expr\AssignOp\Pow       [$1, $3]; }
-    | variable T_COALESCE_EQUAL expr                        { $$ = Expr\AssignOp\Coalesce  [$1, $3]; }
     | variable T_INC                                        { $$ = Expr\PostInc[$1]; }
     | T_INC variable                                        { $$ = Expr\PreInc [$2]; }
     | variable T_DEC                                        { $$ = Expr\PostDec[$1]; }
@@ -708,10 +689,7 @@ expr:
     | T_REQUIRE expr                                        { $$ = Expr\Include_[$2, Expr\Include_::TYPE_REQUIRE]; }
     | T_REQUIRE_ONCE expr                                   { $$ = Expr\Include_[$2, Expr\Include_::TYPE_REQUIRE_ONCE]; }
     | T_INT_CAST expr                                       { $$ = Expr\Cast\Int_    [$2]; }
-    | T_DOUBLE_CAST expr
-          { $attrs = attributes();
-            $attrs['kind'] = $this->getFloatCastKind($1);
-            $$ = new Expr\Cast\Double($2, $attrs); }
+    | T_DOUBLE_CAST expr                                    { $$ = Expr\Cast\Double  [$2]; }
     | T_STRING_CAST expr                                    { $$ = Expr\Cast\String_ [$2]; }
     | T_ARRAY_CAST expr                                     { $$ = Expr\Cast\Array_  [$2]; }
     | T_OBJECT_CAST expr                                    { $$ = Expr\Cast\Object_ [$2]; }
@@ -730,11 +708,11 @@ expr:
     | T_YIELD expr T_DOUBLE_ARROW expr                      { $$ = Expr\Yield_[$4, $2]; }
     | T_YIELD_FROM expr                                     { $$ = Expr\YieldFrom[$2]; }
     | T_FUNCTION optional_ref '(' parameter_list ')' lexical_vars optional_return_type
-      block_or_error
-          { $$ = Expr\Closure[['static' => false, 'byRef' => $2, 'params' => $4, 'uses' => $6, 'returnType' => $7, 'stmts' => $8]]; }
+      '{' inner_statement_list '}'
+          { $$ = Expr\Closure[['static' => false, 'byRef' => $2, 'params' => $4, 'uses' => $6, 'returnType' => $7, 'stmts' => $9]]; }
     | T_STATIC T_FUNCTION optional_ref '(' parameter_list ')' lexical_vars optional_return_type
-      block_or_error
-          { $$ = Expr\Closure[['static' => true, 'byRef' => $3, 'params' => $5, 'uses' => $7, 'returnType' => $8, 'stmts' => $9]]; }
+      '{' inner_statement_list '}'
+          { $$ = Expr\Closure[['static' => true, 'byRef' => $3, 'params' => $5, 'uses' => $7, 'returnType' => $8, 'stmts' => $10]]; }
 ;
 
 anonymous_class:
@@ -853,14 +831,17 @@ scalar:
     | dereferencable_scalar                                 { $$ = $1; }
     | constant                                              { $$ = $1; }
     | T_START_HEREDOC T_ENCAPSED_AND_WHITESPACE T_END_HEREDOC
-          { $$ = $this->parseDocString($1, $2, $3, attributes(), stackAttributes(#3), true); }
+          { $attrs = attributes(); setDocStringAttrs($attrs, $1);
+            $$ = new Scalar\String_(Scalar\String_::parseDocString($1, $2), $attrs); }
     | T_START_HEREDOC T_END_HEREDOC
-          { $$ = $this->parseDocString($1, '', $2, attributes(), stackAttributes(#2), true); }
+          { $attrs = attributes(); setDocStringAttrs($attrs, $1);
+            $$ = new Scalar\String_('', $attrs); }
     | '"' encaps_list '"'
           { $attrs = attributes(); $attrs['kind'] = Scalar\String_::KIND_DOUBLE_QUOTED;
             parseEncapsed($2, '"', true); $$ = new Scalar\Encapsed($2, $attrs); }
     | T_START_HEREDOC encaps_list T_END_HEREDOC
-          { $$ = $this->parseDocString($1, $2, $3, attributes(), stackAttributes(#3), true); }
+          { $attrs = attributes(); setDocStringAttrs($attrs, $1);
+            parseEncapsedDoc($2, true); $$ = new Scalar\Encapsed($2, $attrs); }
 ;
 
 optional_expr:
@@ -961,14 +942,8 @@ array_pair_list:
           { $$ = $1; $end = count($$)-1; if ($$[$end] === null) array_pop($$); }
 ;
 
-comma_or_error:
-      ','
-    | error
-          { /* do nothing -- prevent default action of $$=$1. See #551. */ }
-;
-
 inner_array_pair_list:
-      inner_array_pair_list comma_or_error array_pair       { push($1, $3); }
+      inner_array_pair_list ',' array_pair                  { push($1, $3); }
     | array_pair                                            { init($1); }
 ;
 

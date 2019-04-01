@@ -83,7 +83,7 @@ trait BuildsQueries
      * @param  mixed  $value
      * @param  callable  $callback
      * @param  callable  $default
-     * @return mixed|$this
+     * @return mixed
      */
     public function when($value, $callback, $default = null)
     {
@@ -99,7 +99,7 @@ trait BuildsQueries
     /**
      * Pass the query to a given callback.
      *
-     * @param  callable  $callback
+     * @param  \Closure  $callback
      * @return \Illuminate\Database\Query\Builder
      */
     public function tap($callback)
@@ -113,7 +113,7 @@ trait BuildsQueries
      * @param  mixed  $value
      * @param  callable  $callback
      * @param  callable  $default
-     * @return mixed|$this
+     * @return mixed
      */
     public function unless($value, $callback, $default = null)
     {

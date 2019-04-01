@@ -139,19 +139,19 @@ class ChoiceQuestion extends Question
                 }
                 $selectedChoices = explode(',', $selectedChoices);
             } else {
-                $selectedChoices = [$selected];
+                $selectedChoices = array($selected);
             }
 
-            $multiselectChoices = [];
+            $multiselectChoices = array();
             foreach ($selectedChoices as $value) {
-                $results = [];
+                $results = array();
                 foreach ($choices as $key => $choice) {
                     if ($choice === $value) {
                         $results[] = $key;
                     }
                 }
 
-                if (\count($results) > 1) {
+                if (count($results) > 1) {
                     throw new InvalidArgumentException(sprintf('The provided answer is ambiguous. Value should be one of %s.', implode(' or ', $results)));
                 }
 

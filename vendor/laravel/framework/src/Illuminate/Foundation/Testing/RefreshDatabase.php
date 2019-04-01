@@ -25,9 +25,9 @@ trait RefreshDatabase
      */
     protected function usingInMemoryDatabase()
     {
-        $default = config('database.default');
-
-        return config("database.connections.$default.database") === ':memory:';
+        return config('database.connections')[
+            config('database.default')
+        ]['database'] == ':memory:';
     }
 
     /**
@@ -50,9 +50,7 @@ trait RefreshDatabase
     protected function refreshTestDatabase()
     {
         if (! RefreshDatabaseState::$migrated) {
-            $this->artisan('migrate:fresh', $this->shouldDropViews() ? [
-                '--drop-views' => true,
-            ] : []);
+            $this->artisan('migrate:fresh');
 
             $this->app[Kernel::class]->setArtisan(null);
 
@@ -102,16 +100,5 @@ trait RefreshDatabase
     {
         return property_exists($this, 'connectionsToTransact')
                             ? $this->connectionsToTransact : [null];
-    }
-
-    /**
-     * Determine if views should be dropped when refreshing the database.
-     *
-     * @return bool
-     */
-    protected function shouldDropViews()
-    {
-        return property_exists($this, 'dropViews')
-                            ? $this->dropViews : false;
     }
 }
