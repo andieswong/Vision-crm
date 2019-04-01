@@ -192,7 +192,7 @@ class leadscontroller extends Controller
         $user = User::find($userid);
         $user->notify(new dorequest($me));
 
-        return redirect('/Do_Request')->withSuccess('Notificacion enviada');
+        return redirect('/Do_Request');
     }
     public function updatenotification($notificationid, Request $request, Notifications $notifications)
     {
