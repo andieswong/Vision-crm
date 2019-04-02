@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\prefijo;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,11 @@ class admincontroller extends Controller
 
     public function dialerview()
     {
-        return view('dialer');
+        $estado = "activo";
+        $prefijo_activo = prefijo::where('estado', $estado)->get();
+        return view('dialer',[
+            'prefijo_activo' => $prefijo_activo,
+        ]);
     }
     public function telview()
     {

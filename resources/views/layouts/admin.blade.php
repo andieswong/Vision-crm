@@ -66,6 +66,7 @@
                             @else
                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                         <li class="nav"><a class="nav-link" href="/Leads"  style="color: #ffffff;">Leads</a></li>
+                                        <li class="nav"><a class="nav-link" href="/Prefijos" style="color: #ffffff;">Prefijos</a></li>
                                         <li class="nav"><a class="nav-link" href="/Agentes"  style="color: #ffffff;">Agentes</a></li>
                                         <li class="nav"><a class="nav-link" href="/Telefono"  style="color: #ffffff;">Telefono</a></li>
                                         <li class="nav"><a class="nav-link" href="/Dialer" style="color: #ffffff;">Dialer</a></li>
