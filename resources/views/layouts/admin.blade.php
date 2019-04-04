@@ -134,13 +134,13 @@
 
 
 
-    @yield('content')
+    <div class="wrapper">@yield('content')</div>
 
 
-<div style="background-color: #211A1E;height: 10vh;">
+<div style="background-color: #211A1E;" class="footer">
     <div class="container">
         <div class="row">
-            <div class="col-12" style="color: #ffffff;text-align: left;padding-top: 50px;"><a>Todos los derechos son reservados a Vision callcenter.</a></div>
+            <div class="col-12" style="color: #ffffff;text-align: center;"><p>Todos los derechos son reservados a Vision callcenter.</p></div>
         </div>
     </div>
 </div>

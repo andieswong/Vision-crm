@@ -9,7 +9,7 @@ class report_prefix extends Model
     protected $fillable = [
         'report', 'user_id', 'prefix_id',
     ];
-    public function report()
+    public function prefix()
     {
         return $this->belongsTo(prefijo::class , 'prefix_id');
     }

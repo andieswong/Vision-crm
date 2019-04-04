@@ -3,7 +3,10 @@
     <div class="container">
         <div class="row">
             <div class="col-8" style="padding-top: 20px;padding-bottom: 20px">
-                <div class="card card-header">Prefijo/s Activo/s: @forelse($prefijo_activo as $prefijo){{ $prefijo->prefijo }}@empty No hay prefijo activo.@endforelse</div>
+                <div class="card card-header">Prefijo/s Activo/s: @forelse($prefijo_activo as $prefijo){{ $prefijo->prefijo }}
+                    <form class="post" action="/Prefijo/Reporte"><input type="hidden" value="bueno"><input type="submit" class="btn-success" value="Bueno"></form>
+                    <form class="post" action="/Prefijo/Reporte"><input type="hidden" value="malo"><input type="submit" class="btn-danger" value="Malo"></form>
+                    @empty No hay prefijo activo.@endforelse</div>
                 <div class="card card-body" style="height: 70vh">
                 @if( Auth::user()->nivel->first()->id <= 3)
                     <iframe src="http://187.189.143.4/agc/vicidial-grey.php?pl=&pp=&VD_login={{ Auth::user()->num_emp }}&VD_pass=5357" style="height: 100%;width: 100%"></iframe>

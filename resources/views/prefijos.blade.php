@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-4">
-                <a href="/Prefijos/Nuevo prefijo">Agregar prefijo</a>
+                <a href="/Prefijos/Nuevo p  refijo">Agregar prefijo</a>
             </div>
         </div>
         <div class="row">
@@ -30,10 +30,10 @@
                                 <tr>
                                     <th scope="row">{{ $prefijo->id }}</th>
                                     <td><a href="/Prefijos/Ver/{{ $prefijo->id }}">{{ $prefijo->prefijo }}</a></td>
-                                    <td>{{ $prfijo->estado }}</td>
+                                    <td>{{ $prefijo->estado }}</td>
                                     <td>{{ $prefijo->created_at }}</td>
                                     <td>0</td>
-                                    <td><a href="/Agentes/Ver/{{ $prefijo->user->user }}">{{ $prefijo->user->name }}</a></td>
+
 
                                 </tr>
                             @empty

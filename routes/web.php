@@ -62,7 +62,9 @@ Route::get ('/Leads/Ver/{lead}/Seguimiento', 'leadscontroller@follows')->middlew
 Route::post ('/Lead/Remove/Comment/{commentid}', 'leadscontroller@destroycomment')->middleware('auth');
 
 Route::get ('/Prefijos', 'PrefijoController@Prefijosview')->middleware('auth');
-Route::get ('/Prefijos/Nuevo prefijo', 'PrefijoController@addnewprefix')->middleware('auth');
+Route::get ('/Prefijos/Nuevo prefijo', 'PrefijoController@viewnewprefix')->middleware('auth');
+Route::post('/Prefijos/Nuevo prefijo/Agregar', 'PrefijoController@addnewprefix')->middleware('auth');
+Route::get ('/Prefijos/Ver/{prefijo}', 'PrefijoController@prefixview')->middleware('auth');
 
 
 Route::post ('/Notification', 'leadscontroller@createnotification')->middleware('auth');
