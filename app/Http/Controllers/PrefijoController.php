@@ -12,8 +12,12 @@ class PrefijoController extends Controller
     public function Prefijosview()
     {
         $prefijos = prefijo::paginate(20);
+        $badrep = report_prefix::where('reporte', "malo");
+        $goodrep = report_prefix::where('reporte', "bueno");
         return view('prefijos', [
             'prefijos' => $prefijos,
+            'badrep' => $badrep,
+            'goodrep' => $goodrep,
         ]);
     }
     public function viewnewprefix()
@@ -41,9 +45,10 @@ class PrefijoController extends Controller
             'prefijo' => $prefijo,
         ]);
     }
-    public function report($prefixid, Request $request)
+    public function report(Request $request)
     {
         $user = $request->user();
+        $prefixid = $request->input('prefix_id');
         $prefix = prefijo::where('id', $prefixid)->first();
 
         $report = report_prefix::create([
@@ -53,5 +58,7 @@ class PrefijoController extends Controller
             'prefix_id' => $prefixid
 
         ]);
+
+        return redirect("/Dialer");
     }
 }

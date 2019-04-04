@@ -52,8 +52,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Levels::class, 'levels_users' , 'user_id' , 'level_id');
     }
-
-
-
+    public function reports()
+    {
+        return $this->hasMany( report_prefix::class, 'user_id');
+    }
 }
 

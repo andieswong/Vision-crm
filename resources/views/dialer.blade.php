@@ -3,17 +3,16 @@
     <div class="container">
         <div class="row">
             <div class="col-8" style="padding-top: 20px;padding-bottom: 20px">
-                <div class="card card-header">Prefijo/s Activo/s: @forelse($prefijo_activo as $prefijo){{ $prefijo->prefijo }}
-                    <form class="post" action="/Prefijo/Reporte"><input type="hidden" value="bueno"><input type="submit" class="btn-success" value="Bueno"></form>
-                    <form class="post" action="/Prefijo/Reporte"><input type="hidden" value="malo"><input type="submit" class="btn-danger" value="Malo"></form>
-                    @empty No hay prefijo activo.@endforelse</div>
+                <div class="card card-header">
+                    <div class="form-row">Prefijo/s Activo/s: @forelse($prefijo_activo as $prefijo){{ $prefijo->prefijo }}
+                    <form method="post" action="/Prefijo/Reporte">@csrf<input type="hidden" name="prefix_id" value="{{ $prefijo->id }}"><input type="hidden" name="report" value="bueno"><input type="submit" class="btn-success rounded" value="Bueno"></form>
+                    <form method="post" action="/Prefijo/Reporte">@csrf<input type="hidden" name="prefix_id" value="{{ $prefijo->id }}"><input type="hidden" name="report" value="malo"><input type="submit" class="btn-danger rounded" value="Malo"></form>
+                    @empty No hay prefijo activo.@endforelse</div></div>
                 <div class="card card-body" style="height: 70vh">
                 @if( Auth::user()->nivel->first()->id <= 3)
                     <iframe src="http://187.189.143.4/agc/vicidial-grey.php?pl=&pp=&VD_login={{ Auth::user()->num_emp }}&VD_pass=5357" style="height: 100%;width: 100%"></iframe>
-                        {{--<a href="http://192.200.118.66/agc/vicidial-grey.php?pl=&pp=&VD_login=&VD_pass=" target="_blank" ><button class="btn btn-primary">Dialer</button></a>--}}
                 @else
                     <iframe src="http://187.189.143.4/vicidial/welcome.php" style="height: 100%;width: 100%"></iframe>
-    {{--<a href="http://192.200.118.66/vicidial/welcome.php" target="_blank" ><button class="btn btn-primary">Dialer admin</button></a>--}}
 @endif
 </div>
 </div>

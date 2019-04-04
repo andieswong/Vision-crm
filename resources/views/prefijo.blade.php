@@ -9,12 +9,14 @@
                     Prefijo: {{ $prefijo->prefijo }}<br/>
                     id: {{ $prefijo->id }}<br/>
                     Subido por: {{ $prefijo->usuario }}<br/>
-                    Reportes: 0 <br/>
+                    Reportes: {{ $prefijo->reports->count() }} <br/>
                 </p>
             </div>
             <div class="col-8">
                 <div class="card">
-                    <div class="card-body">Reportes para este prefijo:</div>
+                    <div class="card-body text-center">Reportes para este prefijo:</div>
+
+                    
 
                 </div>
             </div>

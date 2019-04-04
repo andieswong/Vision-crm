@@ -16,7 +16,7 @@
                 <div class="card-header card-header-tabs">
                     <h5>Administracion</h5>
                 </div>
-                <div class="card-body">
+                <div class="card-header card-header-tabs">
                     <a href="/Ajustes/Puestos"><h5>Puestos</h5></a>
                     <a href="/Ajustes/Equipos"><h5>Equipos</h5></a>
                     <a href="/Ajustes/Niveles"><h5>Niveles </h5></a>

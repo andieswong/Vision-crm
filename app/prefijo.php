@@ -17,4 +17,12 @@ class prefijo extends Model
     {
         return $this->hasMany(report_prefix::class , 'prefix_id');
     }
+    public function badreports()
+    {
+        return $this->reports()->where('report', "malo");
+    }
+    public function goodreports()
+    {
+        return $this->reports()->where('report', "bueno");
+    }
 }

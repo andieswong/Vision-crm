@@ -65,6 +65,8 @@ Route::get ('/Prefijos', 'PrefijoController@Prefijosview')->middleware('auth');
 Route::get ('/Prefijos/Nuevo prefijo', 'PrefijoController@viewnewprefix')->middleware('auth');
 Route::post('/Prefijos/Nuevo prefijo/Agregar', 'PrefijoController@addnewprefix')->middleware('auth');
 Route::get ('/Prefijos/Ver/{prefijo}', 'PrefijoController@prefixview')->middleware('auth');
+Route::post('/Prefijo/Reporte', 'PrefijoController@report')->middleware('auth');
+
 
 
 Route::post ('/Notification', 'leadscontroller@createnotification')->middleware('auth');

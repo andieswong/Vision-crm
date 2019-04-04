@@ -7,7 +7,7 @@
             <div class="col-12">
 
                 <div class="card-header" >
-                    Agregar equipo
+                    Agregar prefijo
                     @if(session('success'))
                         <span class="text-success">{{ session('success') }}</span>
                     @endif

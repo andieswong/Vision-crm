@@ -7,9 +7,7 @@
         <div class="col-12">
             <div class="card-header">Do Request  @if(session('success'))
                     <span class="text-success">{{ session('success') }}</span>
-                @endif</div>
-
-            <div class="card-body">
+                @endif
             <form method="post" action="/Notification">
 
                 <div class="form-group row">
