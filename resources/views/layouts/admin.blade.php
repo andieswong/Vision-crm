@@ -65,21 +65,25 @@
 
                         <ul class="navbar-nav mr-auto">
                             <li class="nav"><a class="nav-link" href="/Leads" style="color: #ffffff;">Leads</a></li>
-                            <li class="nav"><a class="nav-link" href="/Telefono" style="color: #ffffff;">Telefono</a>
+                            <li class="nav"><a class="nav-link" href="/Contactos" style="color: #ffffff;">Contactos</a>
                             </li>
-                            <li class="nav"><a class="nav-link" href="/Dialer" style="color: #ffffff;">Dialer</a></li>
+                            {{--                            <li class="nav"><a class="nav-link" href="/Telefono" style="color: #ffffff;">Telefono (test)</a>--}}
+                            {{--                            </li>--}}
+                            {{--                            <li class="nav"><a class="nav-link" href="/Dialer" style="color: #ffffff;">Dialer(progreso)</a></li>--}}
                         </ul>
                         @else
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <li class="nav"><a class="nav-link" href="/Leads" style="color: #ffffff;">Leads</a></li>
-                                <li class="nav"><a class="nav-link" href="/Prefijos"
-                                                   style="color: #ffffff;">Prefijos</a></li>
+                                <li class="nav"><a class="nav-link" href="/Contactos"
+                                                   style="color: #ffffff;">Contactos</a></li>
+                                {{--                                <li class="nav"><a class="nav-link" href="/Prefijos"--}}
+                                {{--                                                   style="color: #ffffff;">Prefijos</a></li>--}}
                                 <li class="nav"><a class="nav-link" href="/Agentes" style="color: #ffffff;">Agentes</a>
                                 </li>
-                                <li class="nav"><a class="nav-link" href="/Telefono"
-                                                   style="color: #ffffff;">Telefono</a></li>
-                                <li class="nav"><a class="nav-link" href="/Dialer" style="color: #ffffff;">Dialer</a>
-                                </li>
+                                {{--                                <li class="nav"><a class="nav-link" href="/Telefono"--}}
+                                {{--                                                   style="color: #ffffff;">Telefono (test)</a></li>--}}
+                                {{--                                <li class="nav"><a class="nav-link" href="/Dialer" style="color: #ffffff;">Dialer (progreso)</a>--}}
+                                {{--                                </li>--}}
                                 <li class="nav"><a class="nav-link" href="/Admin" style="color: #ffffff;">Admin</a></li>
                                 <li class="nav"><a class="nav-link" href="/Do_Request" style="color: #ffffff;">Do
                                         request</a></li>
@@ -151,14 +155,12 @@
             <div class="col-1"></div>
             <div class="col-10" style="align-content: center">
                 <div class="card-header">
-        @yield('content')
-            </div>
+                    @yield('content')
+                </div>
             </div>
             <div class="col-1"></div>
         </div>
     </div>
-
-
 
 
 </div>
