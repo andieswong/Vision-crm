@@ -70,7 +70,10 @@ Route::get('/Contactos/Nuevo Contacto', 'ContactController@add')->middleware('au
 Route::post('/Contactos/Nuevo contacto/Agregar', 'ContactController@store')->middleware('auth');
 Route::post('/Contactos/Remove/Comment/{commentid}', 'ContactController@destroy')->middleware('auth');
 
-Route::post('/Sms/New/Contact/{contactid}', 'SmsController@index');
+Route::get('/Sms/New/Contact/{contactid}', 'SmsController@index');
+Route::post('/Sms/New/Contact/Crear', 'SmsController@send');
+
+
 
 
 Route::post('/Notification', 'leadscontroller@createnotification')->middleware('auth');

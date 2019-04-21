@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Contact;
+use App\Http\Requests\CreatesmsRequest;
 use App\Sms;
 use Illuminate\Http\Request;
+use Twilio;
 
 class SmsController extends Controller
 {
@@ -26,9 +28,18 @@ class SmsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function send(CreatesmsRequest $request)
     {
-        //
+            $sms = Sms::create([
+                'sms' => $request->input('sms'),
+                'to' => $request->input('to'),
+                'from' => $request->input('from'),
+                'estado' => $request->input('estado'),
+                'user_id' => $request->input('user_id'),
+                'lead_id' => $request->input('lead_id'),
+                'contact_id' => $request->input('contact_id'),
+            ]);
+
     }
 
     /**

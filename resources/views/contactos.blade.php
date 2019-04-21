@@ -40,7 +40,7 @@
                                     <td><a href="/Contacto/Ver/{{ $contacto->id }}">{{ $contacto->telefono }}</a></td>
                                     <td>{{ $contacto->nombre }}</td>
                                     <td>{{ $contacto->user->name }}</td>
-                                    <td><form method="post" action="/Sms/New/Contact/{{ $contacto->id }}" style="display: inline">
+                                    <td><form method="get" action="/Sms/New/Contact/{{ $contacto->id }}" style="display: inline">
                                             @csrf
                                             <button class="badge badge-warning">sms</button>
                                         </form></td>
@@ -88,7 +88,7 @@
                                     <td>{{ $contacto->nombre }}</td>
                                     <td>{{ $contacto->user->name }}</td>
                                     <td>{{ $contacto->estado }}</td>
-                                    <td><form method="post" action="/Sms/New/Contact/{{ $contacto->id }}" style="display: inline">
+                                    <td><form method="get" action="/Sms/New/Contact/{{ $contacto->id }}" style="display: inline">
                                             @csrf
                                             <button class="badge badge-warning">sms</button>
                                         </form></td>

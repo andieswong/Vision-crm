@@ -18,12 +18,12 @@
                             <div class="col-6">
                                 @csrf
                                 <input class="form-control" type="text" name="sms" placeholder="Texto a enviar">
-                                <input class="form-control" type="hidden" name="to" value="{{ $contact->telefono }}">
+                                <input class="form-control" type="hidden" name="to" value="{{ $contact['telefono'] }}">
                                 <input class="form-control" type="hidden" name="from" value="callerid">
                                 <input class="form-control" type="hidden" name="from" value="enviado">
                                 <input class="form-control" type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                 <input class="form-control" type="hidden" name="lead_id" value="null">
-                                <input class="form-control" type="hidden" name="contact_id" value="{{ $contact->id }}">
+                                <input class="form-control" type="hidden" name="contact_id" value="{{ $contact['id'] }}">
                             </div>
                             <div class="col-6">
                                 <button class="btn btn-primary">Agregar</button>
