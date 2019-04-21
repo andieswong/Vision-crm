@@ -29,6 +29,8 @@
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Agente</th>
                                 <th scope="col">Estado</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -38,9 +40,17 @@
                                     <td><a href="/Contacto/Ver/{{ $contacto->id }}">{{ $contacto->telefono }}</a></td>
                                     <td>{{ $contacto->nombre }}</td>
                                     <td>{{ $contacto->user->name }}</td>
+                                    <td><form method="post" action="/Sms/New/Contact/{{ $contacto->id }}" style="display: inline">
+                                            @csrf
+                                            <button class="badge badge-warning">sms</button>
+                                        </form></td>
+                                    <td><form method="post" action="/Contactos/Remove/Comment/{{ $contacto->id }}" style="display: inline">
+                                            @csrf
+                                            <button class="badge badge-danger">Eliminar</button>
+                                        </form></td>
                                 </tr>
                             @empty
-                                <p>No hay prefijos registrados.</p>
+                                <p>No hay contacctos registrados.</p>
                             @endforelse
 
                             <tbody/>
@@ -67,7 +77,7 @@
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Agente</th>
                                 <th scope="col">Estado</th>
-                                <th></th>
+                                <th></th><th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -78,6 +88,10 @@
                                     <td>{{ $contacto->nombre }}</td>
                                     <td>{{ $contacto->user->name }}</td>
                                     <td>{{ $contacto->estado }}</td>
+                                    <td><form method="post" action="/Sms/New/Contact/{{ $contacto->id }}" style="display: inline">
+                                            @csrf
+                                            <button class="badge badge-warning">sms</button>
+                                        </form></td>
                                     <td><form method="post" action="/Contactos/Remove/Comment/{{ $contacto->id }}" style="display: inline">
                                             @csrf
                                             <button class="badge badge-danger">Eliminar</button>
