@@ -16,5 +16,6 @@ class VerifyCsrfToken extends Middleware
         'api/callxml',
         'http://80756a4a.ngrok.io/api/sms',
         'https://www.visioncallcenter.online/api/sms',
+        'https://www.visioncallcenter.online/api/callxml',
     ];
 }
