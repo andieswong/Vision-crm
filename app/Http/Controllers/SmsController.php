@@ -6,10 +6,8 @@ use App\Contact;
 use App\Http\Requests\CreatesmsRequest;
 use App\Sms;
 use Illuminate\Http\Request;
-use Twilio;
 use Twilio\Rest\Client;
 use Twilio\TwiML\MessagingResponse;
-use Twilio\TwiML\TwiML;
 
 class SmsController extends Controller
 {
