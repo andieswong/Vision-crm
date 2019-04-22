@@ -93,5 +93,56 @@ Route::get('/api/notifications', 'usercontroller@notifications')->middleware('au
 Route::get('/api/notifications/count', 'usercontroller@notificationscount')->middleware('auth');
 Route::post('/api/sms', 'SmsController@in');
 Route::get('/api/sms', 'SmsController@in');
+Route::get('/api/call', 'CallController@call');
+Route::post('/api/call', 'CallController@call');
+Route::get('/api/callxml', 'CallController@api');
+Route::post('/api/callxml', 'CallController@api');
+
+
+//Route::post('/call', function () {
+//    // Get form input
+//    $userPhone = Input::get('userPhone');
+//    $encodedSalesPhone = urlencode(str_replace(' ','',Input::get('salesPhone')));
+//    // Set URL for outbound call - this should be your public server URL
+//    $host = parse_url(Request::url(), PHP_URL_HOST);
+//
+//    // Create authenticated REST client using account credentials in
+//    // <project root dir>/.env.php
+//    $client = new Twilio\Rest\Client(
+//        getenv('TWILIO_ACCOUNT_SID'),
+//        getenv('TWILIO_AUTH_TOKEN')
+//    );
+//
+//    try {
+//        $client->calls->create(
+//            $userPhone, // The visitor's phone number
+//            getenv('TWILIO_NUMBER'), // A Twilio number in your account
+//            array(
+//                "url" => "http://$host/outbound/$encodedSalesPhone"
+//            )
+//        );
+//    } catch (Exception $e) {
+//        // Failed calls will throw
+//        return $e;
+//    }
+//
+//    // return a JSON response
+//    return array('message' => 'Call incoming!');
+//});
+//
+//Route::post('/outbound/{salesPhone}', function ($salesPhone) {
+//    // A message for Twilio's TTS engine to repeat
+//    $sayMessage = 'Thanks for contacting our sales department. Our
+//        next available representative will take your call.';
+//
+//    $twiml = new Twilio\Twiml();
+//    $twiml->say($sayMessage, array('voice' => 'alice'));
+//    $twiml->dial($salesPhone);
+//
+//    $response = Response::make($twiml, 200);
+//    $response->header('Content-Type', 'text/xml');
+//    return $response;
+//});
+
 
 

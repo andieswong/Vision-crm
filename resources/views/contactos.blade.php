@@ -31,6 +31,7 @@
                                 <th scope="col">Estado</th>
                                 <th></th>
                                 <th></th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -47,6 +48,11 @@
                                     <td><form method="post" action="/Contactos/Remove/Comment/{{ $contacto->id }}" style="display: inline">
                                             @csrf
                                             <button class="badge badge-danger">Eliminar</button>
+                                        </form></td>
+                                    <td><form method="get" action="/Sms/New/Contact/{{ $contacto->id }}" style="display: inline">
+                                            @csrf
+                                            <input type="hidden" value="{{ $contacto->telefono }}" name="to">
+                                            <button class="badge badge-success">call</button>
                                         </form></td>
                                 </tr>
                             @empty
@@ -77,7 +83,9 @@
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Agente</th>
                                 <th scope="col">Estado</th>
-                                <th></th><th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -95,6 +103,11 @@
                                     <td><form method="post" action="/Contactos/Remove/Comment/{{ $contacto->id }}" style="display: inline">
                                             @csrf
                                             <button class="badge badge-danger">Eliminar</button>
+                                        </form></td>
+                                    <td><form method="post" action="/api/call" style="display: inline">
+                                            @csrf
+                                            <input type="hidden" value="{{ $contacto->telefono }}" name="to">
+                                            <button class="badge badge-success">call</button>
                                         </form></td>
                                 </tr>
                             @empty

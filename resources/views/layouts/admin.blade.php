@@ -22,6 +22,9 @@
               integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
               crossorigin="anonymous">
         <link rel="stylesheet" href="{{ mix("css/app.css") }}">
+        <script src="{{ asset('js/twilio.js') }}" defer></script>
+
+
     @else
         <script src="//cdn.sinch.com/latest/sinch.min.js"></script>
         <script src="{{ asset('js/app.js') }}" defer></script>
