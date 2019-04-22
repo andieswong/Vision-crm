@@ -14,5 +14,6 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         'api/sms/recive',
         'http://80756a4a.ngrok.io/api/sms',
+        'https://www.visioncallcenter.online/api/sms',
     ];
 }
