@@ -38,7 +38,7 @@ class CallController extends Controller
         $call = $twilio->calls
             ->create($request->input('to'), // to
                 "+1 480 526 5942", // from
-                array("url" => "http://9d53d878.ngrok.io/api/callxml")
+                array("url" => "https://www.visioncallcenter.online/api/callxml")
             );
 
         return redirect('/Contactos')->withSuccess('LLamada en curso');
