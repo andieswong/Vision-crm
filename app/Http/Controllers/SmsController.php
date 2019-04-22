@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Twilio;
 use Twilio\Rest\Client;
 use Twilio\TwiML\MessagingResponse;
+use Twilio\TwiML\TwiML;
 
 class SmsController extends Controller
 {
@@ -41,22 +42,23 @@ class SmsController extends Controller
             'lead_id' => $request->input('lead_id'),
             'contact_id' => $request->input('contact_id'),
 
-            $sid = 'AC04c3e375bfe60b5b975d8d876a570651',
-            $token = 'faa053ed68745a7574d4f21270cb151b',
+            $sid = env('TWILIO_ACCOUNT_SID'),
+            $token = env('TWILIO_AUTH_TOKEN'),
             $client = new Client($sid, $token),
-            $twilio_number = "+14805265942",
-
+            $twilio_number = env('TWILIO_NUMBER'),
         $client->messages->create(
         // Where to send a text message (your cell phone?)
-            '+526645019881',
+            $request->input('to'),
             array(
                 'from' => $twilio_number,
-                'body' => 'I sent this message in under 10 minutes!'
+                'body' => $request->input('sms')
             ))
 
 
 
         ]);
+
+        return redirect('/Contactos');
 
     }
 
@@ -66,14 +68,14 @@ class SmsController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function recive()
+    public function in()
     {
         $response = new MessagingResponse();
-        $response->message(
-            "I'm using the Twilio PHP library to respond to this SMS!"
-        );
+        $message = $response->message('');
+        $message->body('Hola, estas contactando a Visioncc, un agente se comunicara contigo.');
 
-        echo $response;
+
+        print $response;
     }
 
     /**

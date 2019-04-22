@@ -12,6 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        'api/sms/recive',
+        'http://80756a4a.ngrok.io/api/sms',
     ];
 }
