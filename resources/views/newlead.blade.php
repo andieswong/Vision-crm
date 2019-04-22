@@ -109,7 +109,7 @@
 
                             <div class="col">
                                 {{--<input id="paq_ofrecido" type="text" class="form-control{{ $errors->has('paq_ofrecido') ? ' is-invalid' : '' }}" name="paq_ofrecido" value="" placeholder="Paquete ofrecido"  autofocus>--}}
-                                <select id="paq_ofrecido" class="form-control">
+                                <select id="paq_ofrecido" name="paq_ofrecido" class="form-control">
                                     <option value="optimo mas">test</option>
                                 </select>
 

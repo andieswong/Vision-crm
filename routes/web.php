@@ -71,6 +71,7 @@ Route::post('/Contactos/Nuevo contacto/Agregar', 'ContactController@store')->mid
 Route::post('/Contactos/Remove/Comment/{commentid}', 'ContactController@destroy')->middleware('auth');
 
 Route::get('/Sms/New/Contact/{contactid}', 'SmsController@index');
+Route::post('/Sms/New/Contact/{contactid}', 'SmsController@send');
 Route::post('/Sms/New/Contact/Crear', 'SmsController@send');
 
 
@@ -90,4 +91,5 @@ Route::get('/Areadetrabajo', 'agentcontroller@indexview')->middleware('auth');
 
 Route::get('/api/notifications', 'usercontroller@notifications')->middleware('auth');
 Route::get('/api/notifications/count', 'usercontroller@notificationscount')->middleware('auth');
+Route::get('/api/sms/recive', 'SmsController@recive');
 
