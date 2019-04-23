@@ -41,6 +41,7 @@
                                     <td><a href="/Contacto/Ver/{{ $contacto->id }}">{{ $contacto->telefono }}</a></td>
                                     <td>{{ $contacto->nombre }}</td>
                                     <td>{{ $contacto->user->name }}</td>
+                                    <td>{{ $contacto->estado }}</td>
                                     <td><form method="get" action="/Sms/New/Contact/{{ $contacto->id }}" style="display: inline">
                                             @csrf
                                             <button class="badge badge-warning">sms</button>
@@ -78,7 +79,6 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th scope="col">#id</th>
                                 <th scope="col">Numero</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Agente</th>
@@ -91,7 +91,6 @@
                             <tbody>
                             @forelse($contactos as $contacto)
                                 <tr>
-                                    <th scope="row">{{ $contacto->id }}</th>
                                     <td><a href="/Contacto/Ver/{{ $contacto->id }}">{{ $contacto->telefono }}</a></td>
                                     <td>{{ $contacto->nombre }}</td>
                                     <td>{{ $contacto->user->name }}</td>
@@ -128,6 +127,27 @@
                 @endif
 
 
+            </div>
+            <div class="col-4">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Numero</th>
+                        <th scope="col">Nombre</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @forelse(Auth::user()->prefijos as $prefijo)
+                        <tr>
+                            <td><a href="/Contacto/Ver/{{ $prefijo->id }}">{{ $prefijo->prefijo }}</a></td>
+                            <td>{{ $prefijo->estado }}</td>
+                        </tr>
+                    @empty
+                        <p>No hay prefijos registrados.</p>
+                    @endforelse
+
+                    <tbody/>
+                </table>
             </div>
         </div>
     </div>
