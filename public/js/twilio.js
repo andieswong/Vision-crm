@@ -59,7 +59,7 @@
                 }).fail(function (error) {
                     $("#tabla").load(" #tabla");
                 });
-                log('Buscando siguiente llamada.');
+                log('Buscando siguiente llamada...');
                 var params = {
                     To: document.getElementById('phone-number').value
                 };
