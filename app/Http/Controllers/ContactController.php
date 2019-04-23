@@ -54,9 +54,7 @@ class ContactController extends Controller
         $contactid = $request->input('contactid');
         $contacto = Contact::where('id', $contactid)->first();
 
-        $contacto->estado = 'called';
-
-        $contacto->save();
+        $contacto->delete();
     }
 
 
