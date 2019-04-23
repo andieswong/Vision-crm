@@ -40,7 +40,7 @@
                     <div id="log"></div>
                 </div>
                 <div id="tabla">
-                @if(count($contacto) > 0)
+
                 <table class="table">
                     <thead>
                     <tr>
@@ -56,6 +56,7 @@
                     </thead>
                     <tbody>
                     <tr>
+
                         <th scope="row">{{ $contacto->id }}</th>
                         <td><a href="/Contacto/Ver/{{ $contacto->id }}">{{ $contacto->telefono }}</a></td>
                         <td>{{ $contacto->nombre }}</td>
@@ -71,9 +72,7 @@
                 <input id="contactid" value="{{ $contacto->id }}" type="hidden">
                 <input id="estatus" value="called" type="hidden">
                 </div>
-                    @else
-                    <p>No hay contactos</p>
-                    @endif
+                    
             </div>
         </div>
     </div>

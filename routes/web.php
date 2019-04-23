@@ -74,7 +74,7 @@ Route::get('/Sms/New/Contact/{contactid}', 'SmsController@index');
 Route::post('/Sms/New/Contact/{contactid}', 'SmsController@send');
 Route::post('/Sms/New/Contact/Crear', 'SmsController@send');
 
-Route::get('/Call', 'CallController@callindex');
+Route::get('/Call', 'CallController@callindex')->middleware('auth');
 
 
 Route::post('/Notification', 'leadscontroller@createnotification')->middleware('auth');
