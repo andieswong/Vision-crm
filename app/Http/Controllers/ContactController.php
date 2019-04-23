@@ -49,6 +49,15 @@ class ContactController extends Controller
 
         return redirect('/Contactos')->withSuccess('Contacto Eliminado');
     }
+    public function status (CreatecontactRequest $request)
+    {
+        $contactid = $request->input('contactid');
+        $contacto = Contact::where('id', $contactid)->first();
+
+        $contacto->estado = 'called';
+
+        $contacto->save();
+    }
 
 
 
