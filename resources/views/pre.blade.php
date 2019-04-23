@@ -12,7 +12,7 @@
             <div class="col-8">
 
 
-                @if(count($prefijos) > 0)
+                @if($pre)
 
                     <table class="table">
                         <thead>
@@ -22,10 +22,10 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @forelse($prefijos as $prefijo)
+                        @forelse($pre as $prefijo)
                             <tr>
                                 <th scope="row">{{ $prefijo->id }}</th>
-                                <td><a href="/Prefijos/Ver/{{ $prefijo->id }}">{{ $prefijo->pre }}</a></td>
+                                <td><a href="/Prefijos/Tomar/{{ $prefijo->id }}">{{ $prefijo->prefijo }}</a></td>
                             </tr>
                         @empty
                             <p>No hay prefijos registrados.</p>
@@ -39,9 +39,7 @@
                     <p>No hay prefijos registrados.</p>
 
                 @endif
-                @if(count($prefijos))
-                    {{ $prefijos->links() }}
-                @endif
+
 
 
             </div>

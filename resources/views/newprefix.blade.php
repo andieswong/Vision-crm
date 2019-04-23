@@ -18,8 +18,6 @@
                             <div class="col-6">
                                 @csrf
                                 <input class="form-control" type="text" name="prefijo" placeholder="Prefijo a agregar">
-                                <input class="form-control" type="text" name="estado" placeholder="Estado del prefijo">
-                                <input class="form-control" type="hidden" name="usuario" value="{{ Auth::user()->name }}">
                             </div>
                             <div class="col-6">
                                 <button class="btn btn-primary">Agregar</button>

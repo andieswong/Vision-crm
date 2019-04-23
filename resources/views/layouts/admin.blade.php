@@ -52,6 +52,8 @@
                         <ul class="navbar-nav mr-auto">
                             <li class="nav"><a class="nav-link" href="/Leads" style="color: #ffffff;">Leads</a></li>
                             <li class="nav"><a class="nav-link" href="/Contactos" style="color: #ffffff;">Contactos</a>
+                            <li class="nav"><a class="nav-link" href="/Call" style="color: #ffffff;">Dialer</a></li>
+                            <li class="nav"><a class="nav-link" href="/Prefijos" style="color: #ffffff;">Prefijos</a></li>
                             </li>
                             {{--                            <li class="nav"><a class="nav-link" href="/Telefono" style="color: #ffffff;">Telefono (test)</a>--}}
                             {{--                            </li>--}}
@@ -62,8 +64,7 @@
                                 <li class="nav"><a class="nav-link" href="/Leads" style="color: #ffffff;">Leads</a></li>
                                 <li class="nav"><a class="nav-link" href="/Contactos" style="color: #ffffff;">Contactos</a></li>
                                 <li class="nav"><a class="nav-link" href="/Call" style="color: #ffffff;">Dialer</a></li>
-                                {{--                                <li class="nav"><a class="nav-link" href="/Prefijos"--}}
-                                {{--                                                   style="color: #ffffff;">Prefijos</a></li>--}}
+                                <li class="nav"><a class="nav-link" href="/Prefijos" style="color: #ffffff;">Prefijos</a></li>
                                 <li class="nav"><a class="nav-link" href="/Agentes" style="color: #ffffff;">Agentes</a>
                                 </li>
                                 {{--                                <li class="nav"><a class="nav-link" href="/Telefono"--}}

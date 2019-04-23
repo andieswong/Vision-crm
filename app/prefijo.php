@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class prefijo extends Model
 {
     protected $fillable = [
-        'prefijo', 'estado', 'usuario',
+        'prefijo', 'estado', 'usuario','pre',
     ];
     public function user()
     {

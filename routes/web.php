@@ -62,8 +62,10 @@ Route::post('/Lead/Remove/Comment/{commentid}', 'leadscontroller@destroycomment'
 Route::get('/Prefijos', 'PrefijoController@Prefijosview')->middleware('auth');
 Route::get('/Prefijos/Nuevo prefijo', 'PrefijoController@viewnewprefix')->middleware('auth');
 Route::post('/Prefijos/Nuevo prefijo/Agregar', 'PrefijoController@addnewprefix')->middleware('auth');
-Route::get('/Prefijos/Ver/{prefijo}', 'PrefijoController@prefixview')->middleware('auth');
+//Route::get('/Prefijos/Ver/{prefijo}', 'PrefijoController@prefixview')->middleware('auth');
 Route::post('/Prefijo/Reporte', 'PrefijoController@report')->middleware('auth');
+Route::get('/Prefijos/Ver/{preid}', 'PrefijoController@pre')->middleware('auth');
+Route::get('/Prefijos/Tomar/{preid}', 'PrefijoController@take')->middleware('auth');
 
 Route::get('/Contactos', 'ContactController@index')->middleware('auth');
 Route::get('/Contactos/Nuevo Contacto', 'ContactController@add')->middleware('auth');

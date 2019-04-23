@@ -15,8 +15,8 @@ class CallController extends Controller
     {
 
         $userid = $request->user()->id;
-        $contactodeusuario = Contact::where('user_id', $userid)->first();
-        $contacto = $contactodeusuario->where('estado', 'new')->first();
+        $contactsofuser = Contact::where('user_id', $userid)->paginate(20);
+        $contacto = $contactsofuser->where('estado', 'new')->first();
 
 
         return view ('call', [
