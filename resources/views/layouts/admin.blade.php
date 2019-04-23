@@ -20,6 +20,7 @@
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
           crossorigin="anonymous">
     <link rel="stylesheet" href="{{ mix("css/app.css") }}">
+    <link rel="stylesheet" href="{{ mix("js/app.js") }}">
     <link rel="stylesheet" href="{{ asset("css/site.css") }}">
     <script src="{{ asset('js/twilio.js') }}" defer></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -59,9 +60,8 @@
                         @else
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <li class="nav"><a class="nav-link" href="/Leads" style="color: #ffffff;">Leads</a></li>
-                                <li class="nav"><a class="nav-link" href="/Contactos"
-                                                   style="color: #ffffff;">Contactos</a></li>
-                                <li class="nav"><a class="nav-link" href="/Call">Dialer</a></li>
+                                <li class="nav"><a class="nav-link" href="/Contactos" style="color: #ffffff;">Contactos</a></li>
+                                <li class="nav"><a class="nav-link" href="/Call" style="color: #ffffff;">Dialer</a></li>
                                 {{--                                <li class="nav"><a class="nav-link" href="/Prefijos"--}}
                                 {{--                                                   style="color: #ffffff;">Prefijos</a></li>--}}
                                 <li class="nav"><a class="nav-link" href="/Agentes" style="color: #ffffff;">Agentes</a>
