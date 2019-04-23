@@ -57,7 +57,7 @@
                     <tbody>
                     <tr>
 
-                        @if (count($contacto) > 0)
+                        @if ($contacto)
 
                         <th scope="row">{{ $contacto->id }}</th>
                         <td><a href="/Contacto/Ver/{{ $contacto->id }}">{{ $contacto->telefono }}</a></td>
