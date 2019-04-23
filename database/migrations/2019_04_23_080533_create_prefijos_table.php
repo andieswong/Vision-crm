@@ -15,6 +15,7 @@ class CreatePrefijosTable extends Migration
     {
         Schema::table('prefijos', function (Blueprint $table) {
             $table->integer('pre')->unsigned();
+            $table->integer('usuario')->unsigned()->change();
 
 
 
