@@ -57,6 +57,8 @@
                     <tbody>
                     <tr>
 
+                        @if (count($contacto) > 0)
+
                         <th scope="row">{{ $contacto->id }}</th>
                         <td><a href="/Contacto/Ver/{{ $contacto->id }}">{{ $contacto->telefono }}</a></td>
                         <td>{{ $contacto->nombre }}</td>
@@ -71,8 +73,10 @@
                 </table>
                 <input id="contactid" value="{{ $contacto->id }}" type="hidden">
                 <input id="estatus" value="called" type="hidden">
+                    @endif
+
                 </div>
-                    
+
             </div>
         </div>
     </div>
