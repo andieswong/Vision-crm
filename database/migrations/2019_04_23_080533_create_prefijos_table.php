@@ -14,12 +14,8 @@ class CreatePrefijosTable extends Migration
     public function up()
     {
         Schema::create('prefijos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-            $table->text('prefijo');
-            $table->string('estado');
             $table->integer('pre')->unsigned();
-            $table->integer('usuario')->unsigned();
+            $table->integer('usuario')->unsigned()->change();
 
 
 
