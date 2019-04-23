@@ -94,7 +94,6 @@ Route::get('/api/notifications/count', 'usercontroller@notificationscount')->mid
 Route::post('/api/sms', 'SmsController@in');
 Route::get('/api/sms', 'SmsController@in');
 Route::get('/api/call', 'CallController@call');
-Route::post('/api/call', 'CallController@call');
 
 Route::get('/api/callxml', 'CallController@api');
 Route::post('/api/callxml', 'CallController@api');
