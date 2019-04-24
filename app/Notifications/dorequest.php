@@ -48,17 +48,17 @@ class dorequest extends Notification
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-//    public function toMail($notifiable)
-//    {
-//        return (new MailMessage)
-//            ->subject('Tienes un nuevo DoRequest')
-//            ->greeting('Hola, ' . $notifiable->name)
-//                    ->line('El Agente ' . $this->dorequester->name . ' te a mandado un DoRequest')
-//                    ->action('Revisar el DoRequest', url('/Notifications'))
-//                    ->line('Gracias por formar parte de Vision')
-//            ->salutation('De parte de Visioncrm.');
-//
-//    }
+    public function toMail($notifiable)
+    {
+        return (new MailMessage)
+            ->subject('Tienes un nuevo DoRequest')
+            ->greeting('Hola, ' . $notifiable->name)
+                    ->line('El Agente ' . $this->dorequester->name . ' te a mandado un DoRequest')
+                    ->action('Revisar el DoRequest', url('/Notifications'))
+                    ->line('Gracias por formar parte de Vision')
+            ->salutation('De parte de Visioncrm.');
+
+    }
 
     /**
      * Get the array representation of the notification.
