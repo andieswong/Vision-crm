@@ -81,6 +81,7 @@ Route::get('/Call', 'CallController@callindex')->middleware('auth');
 
 
 Route::post('/Notification', 'leadscontroller@createnotification')->middleware('auth');
+Route::post('/Notificationall', 'leadscontroller@createnotificationall')->middleware('auth');
 Route::get('/Notifications', 'leadscontroller@center')->middleware('auth');
 Route::post('/Notifications/Estado/{notificationid}', 'leadscontroller@updatenotification')->middleware('auth');
 Route::post('/Notifications/Remove/{id}', 'leadscontroller@destroynotification')->middleware('auth');

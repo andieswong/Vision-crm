@@ -194,6 +194,27 @@ class leadscontroller extends Controller
 
         return redirect('/Do_Request');
     }
+    public function createnotificationall(CreateNotificationRequest $request)
+    {
+        $me = $request->user();
+    $users = User::all();
+
+        foreach ($users as $user )
+        {
+            $notification = Notifications::create([
+
+                'notification' => $request->input('notification'),
+                'user_id' => $user->id,
+                'estado' => $request->input('estado'),
+            ]);
+
+            $user->notify(new dorequest($me));
+        }
+
+
+
+        return redirect('/Do_Request')->withSucces('Usuarios notificados');
+    }
     public function updatenotification($notificationid, Request $request, Notifications $notifications)
     {
         $notification = $notifications::where('id', $notificationid)->first();

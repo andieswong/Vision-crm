@@ -31,6 +31,23 @@
                         </button>
                     </div>
                 </div>
+            </form>
+                <form method="post" action="/Notificationall">
+                <div class="form-group row">
+                    <div class="col">
+                        @csrf
+                        <input class="form-control" type="text" name="notification" placeholder="Notificacion">
+                        <input class="form-control" type="hidden" name="estado" value="activo">
+                    </div>
+                    <div class="col">
+                        <p>A todos</p>
+                    </div>
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary">
+                            Notificar
+                        </button>
+                    </div>
+                </div>
 
             </form>
             </div>
