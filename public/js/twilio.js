@@ -27,6 +27,7 @@
             device.on('ready', function (device) {
                 log('Dialer Listo!');
                 document.getElementById('call-controls').style.display = 'block';
+
             });
 
             device.on('error', function (error) {
@@ -38,8 +39,10 @@
                 document.getElementById('button-call').style.display = 'none';
                 document.getElementById('button-hangup').style.display = 'inline';
                 document.getElementById('button-stop').style.display = 'inline';
+                document.getElementById('ins').style.display = 'none';
                 volumeIndicators.style.display = 'block';
                 bindVolumeIndicators(conn);
+
             });
 
             device.on('disconnect', function (conn) {
@@ -64,6 +67,8 @@
                     To: document.getElementById('phone-number').value
                 };
                 console.log('Calling ' + params.To + '...');
+                log('Calling ' + params.To + '...');
+                document.getElementById('callerid').placeholder = params.To;
                 if (device) {
                     device.connect(params);
                 }
@@ -96,7 +101,7 @@
         })
         .catch(function (err) {
             console.log(err);
-            log('.');
+            log('');
         });
 
     // Bind button to make call
@@ -109,6 +114,7 @@
         console.log('Calling ' + params.To + '...');
         if (device) {
             device.connect(params);
+            device.disconnectAll();
         }
     };
 

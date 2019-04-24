@@ -66,6 +66,7 @@ Route::post('/Prefijos/Nuevo prefijo/Agregar', 'PrefijoController@addnewprefix')
 Route::post('/Prefijo/Reporte', 'PrefijoController@report')->middleware('auth');
 Route::get('/Prefijos/Ver/{preid}', 'PrefijoController@pre')->middleware('auth');
 Route::get('/Prefijos/Tomar/{preid}', 'PrefijoController@take')->middleware('auth');
+Route::post('/Contactos/Remove/Prefijo/{preid}', 'PrefijoController@rm')->middleware('auth');
 
 Route::get('/Contactos', 'ContactController@index')->middleware('auth');
 Route::get('/Contactos/Nuevo Contacto', 'ContactController@add')->middleware('auth');

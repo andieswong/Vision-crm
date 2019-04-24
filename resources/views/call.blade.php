@@ -6,15 +6,13 @@
         <div class="row">
             <div class="col-12">
 
-                <div class="card-header">
-                    Llamar
-                    @if(session('success'))
-                        <span class="text-success">{{ session('success') }}</span>
-                    @endif
+                <div id="caller" class="card-header" >
+                    <p>En llamada con:</p>
+                    <input id="callerid" class="btn btn-success" placeholder="{{ $contacto->telefono }}">
                 </div>
                 <div id="controls">
                     <div id="info">
-                        <p class="instructions">Twilio Client</p>
+                        <p id="ins" style="display: inline" class="instructions">Presiona el boton para comenzar a llamar</p>
                         <div id="output-selection">
                             <label>Ringtone Devices</label>
                             <select id="ringtone-devices" multiple></select>
@@ -37,47 +35,25 @@
                             <div id="output-volume"></div>
                         </div>
                     </div>
-                    <div id="log"></div>
+
                 </div>
                 <div id="tabla">
 
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">#id</th>
-                        <th scope="col">Numero</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Agente</th>
-                        <th scope="col">Estado</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-
                         @if ($contacto)
-
-                        <th scope="row">{{ $contacto->id }}</th>
-                        <td><a href="/Contacto/Ver/{{ $contacto->id }}">{{ $contacto->telefono }}</a></td>
-                        <td>{{ $contacto->nombre }}</td>
-                        <td>{{ $contacto->user->name }}</td>
                         <input type="hidden" id="phone-number" name="phone-number"
                                value="{{ $contacto->telefono }}">
-                        <td>
-                            <button class="badge badge" id="queue">Llamada actual</button>
-                        </td>
-                    </tr>
-                    <tbody/>
                 </table>
                 <input id="contactid" value="{{ $contacto->id }}" type="hidden">
                 <input id="estatus" value="called" type="hidden">
                     @endif
 
                 </div>
-
             </div>
         </div>
+    </div>
+    <div class="row" style="display: none">
+        <div class="col-12">
+        <div class="card-header"><div id="log"></div></div>
+    </div>
     </div>
 @endsection

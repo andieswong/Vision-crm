@@ -14,7 +14,8 @@ class ContactController extends Controller
     {
         $contactos = Contact::paginate(20);
         $userid = $request->user()->id;
-        $contactsofuser = Contact::where('user_id', $userid)->paginate(20);
+        $contactsofusernofilter = Contact::where('user_id', $userid);
+        $contactsofuser = $contactsofusernofilter->where('estado', 'nuevo')->paginate(20);
         return view ('contactos', [
             'contactos' => $contactos,
             'contactsofuser' => $contactsofuser,

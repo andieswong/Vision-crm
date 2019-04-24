@@ -4,20 +4,13 @@
     <div class="container">
         <div class="row">
             <div class="col-4">
-                <a href="/Contactos/Nuevo Contacto">Agregar contacto</a>
+                <button class="btn btn-success" href="/Contactos/Nuevo Contacto">Agregar contacto</button>
             </div>
+
         </div>
         <div class="row">
 
             <div class="col-8">
-
-                @if(session('error'))
-                    <span class="badge-danger">{{ session('error') }}</span>
-                @endif
-                    @if(session('success'))
-                        <span class="badge-success">{{ session('success') }}</span>
-                    @endif
-
                 @if(auth::user()->nivel->first()->id <= 1)
                     @if(count($contactsofuser) > 0)
 
@@ -132,15 +125,18 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">Numero</th>
-                        <th scope="col">Nombre</th>
+                        <th scope="col">Prefijo</th>
+                        <th scope="col"></th>
                     </tr>
                     </thead>
                     <tbody>
                     @forelse(Auth::user()->prefijos as $prefijo)
                         <tr>
-                            <td><a href="/Contacto/Ver/{{ $prefijo->id }}">{{ $prefijo->prefijo }}</a></td>
-                            <td>{{ $prefijo->estado }}</td>
+                            <td>{{ $prefijo->prefijo }}</td>
+                            <td><form method="post" action="/Contactos/Remove/Prefijo/{{ $prefijo->id }}" style="display: inline">
+                                    @csrf
+                                    <button class="badge badge-danger">Eliminar</button>
+                                </form></td>
                         </tr>
                     @empty
                         <p>No hay prefijos registrados.</p>

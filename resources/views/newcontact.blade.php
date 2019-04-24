@@ -20,7 +20,7 @@
                                 <input class="form-control" type="text" name="numero" placeholder="Numero a agregar">
                                 <input class="form-control" type="text" name="nombre" placeholder="Nombre del contacto">
                                 <input class="form-control" type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                                <input class="form-control" type="hidden" name="estado" value="new">
+                                <input class="form-control" type="hidden" name="estado" value="nuevo">
                             </div>
                             <div class="col-6">
                                 <button class="btn btn-primary">Agregar</button>

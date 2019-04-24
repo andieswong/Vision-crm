@@ -123,9 +123,42 @@ class PrefijoController extends Controller
 
         $prefijo->estado = 'taken';
 
+        $prefijo->usuario = $request->user()->id;
+
         $prefijo->save();
 
-        return redirect('/Contactos');
+        return redirect('/Contactos')->withSuccess('Prefijo Agregado');
+    }
+    public function rm ($prefixid, Request $request)
+    {
+        $prefix = prefijo::where('id', $prefixid)->first();
+        $precontacts = '+1'.$prefix->prefijo;
+        $cont = 10;
+        $limite = 100;
+
+
+            while ($cont < $limite) {
+
+                $contacto = $precontacts . $cont;
+
+                $contact = Contact::where('telefono', $contacto)->first();
+
+                $contact->delete();
+
+                $cont++;
+
+            }
+
+        $me = $request->user();
+            $myid = $me->id;
+
+            $prefix->usuario = "1";
+
+            $prefix->save();
+
+
+
+        return redirect('/Contactos')->withSuccess('Prefijo eliminado');
     }
 
 
