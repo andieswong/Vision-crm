@@ -143,7 +143,13 @@ class PrefijoController extends Controller
 
                 $contact = Contact::where('telefono', $contacto)->first();
 
-                $contact->delete();
+                $exist = isset($contact);
+
+                if ($exist) {
+
+                    $contact->delete();
+
+                }
 
                 $cont++;
 

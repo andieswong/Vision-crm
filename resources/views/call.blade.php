@@ -8,7 +8,7 @@
 
                 <div id="caller" class="card-header" >
                     <p>En llamada con:</p>
-                    <input id="callerid" class="btn btn-success" placeholder="{{ $contacto->telefono }}">
+                    <input id="callerid" class="input alert-success rounded" value="{{ $contacto->telefono }}">
                 </div>
                 <div id="controls">
                     <div id="info">

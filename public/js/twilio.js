@@ -68,7 +68,7 @@
                 };
                 console.log('Calling ' + params.To + '...');
                 log('Calling ' + params.To + '...');
-                document.getElementById('callerid').placeholder = params.To;
+                document.getElementById('callerid').value = params.To;
                 if (device) {
                     device.connect(params);
                 }
