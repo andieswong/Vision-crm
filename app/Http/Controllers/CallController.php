@@ -7,6 +7,7 @@ use App\Contact;
 use Illuminate\Http\Request;
 use Twilio\Rest\Client;
 use Twilio\TwiML;
+use Plivo\RestClient;
 
 class CallController extends Controller
 {
@@ -41,6 +42,25 @@ class CallController extends Controller
                 "+1 480 526 5942", // from
                 array("url" => "https://www.visioncallcenter.online/api/callxml")
             );
+
+        return redirect('/Contactos')->withSuccess('LLamada en curso');
+
+    }
+    public function calling(Request $request)
+    {
+
+
+
+        $sid = env('PLIVO_AUTH_ID');
+            $token = env('PLIVO_AUTH_TOKEN');
+            $plivo = new RestClient($sid, $token);
+
+        $call_made = $plivo->calls->create(
+            '+19095430757',
+            ['+16194897697'],
+            'https://www.visioncallcenter.online/api/callxml'
+        );
+
 
         return redirect('/Contactos')->withSuccess('LLamada en curso');
 
