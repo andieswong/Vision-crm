@@ -17,7 +17,7 @@ class CreatePrefijosTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('prefijo');
-            $table->string('estado')
+            $table->string('estado');
             $table->integer('pre')->unsigned();
             $table->integer('usuario')->unsigned();
 
