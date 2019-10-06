@@ -8,7 +8,7 @@
     var device;
 
     log('Iniciando dialer...');
-    $.getJSON('https://dandelion-wombat-5999.twil.io/capability-token')
+    $.getJSON('https://magenta-swan-7705.twil.io/capability-token')
         .then(function (data) {
             log('Contactando a la nasa.');
             console.log('Token: ' + data.token);
