@@ -41,7 +41,7 @@ class CallController extends Controller
         $call = $twilio->calls
             ->create($request->input('to'), // to
                 $twilio_number, // from
-
+                array("url" => "https://awconnect.herokuapp.com/api/callxml")
             );
 
         return redirect('/Contactos')->withSuccess('LLamada en curso');
