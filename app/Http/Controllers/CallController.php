@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Twilio\Rest\Client;
 use Twilio\TwiML;
 use Plivo\RestClient;
-use Twilio\Twiml;
+
 
 class CallController extends Controller
 {
@@ -70,7 +70,7 @@ class CallController extends Controller
 
     public function api()
     {
-        $response = new Twiml;
+        $response = new TwiML;
         $say = $response->say('Hola, estas contactando a Visioncc, un agente se comunicara contigo');
         $dial = $response->dial('+16194897697');
 
