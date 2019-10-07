@@ -40,8 +40,8 @@ class CallController extends Controller
 
         $call = $twilio->calls
             ->create($request->input('to'), // to
-                "+1 480 526 5942", // from
-                array("url" => "https://awconnect.herokuapp.com/api/callxml")
+                $twilio_number, // from
+
             );
 
         return redirect('/Contactos')->withSuccess('LLamada en curso');
