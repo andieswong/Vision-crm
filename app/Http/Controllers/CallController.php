@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Twilio\Rest\Client;
 use Twilio\TwiML;
 use Plivo\RestClient;
+use Twilio\Twiml;
 
 class CallController extends Controller
 {
@@ -40,7 +41,7 @@ class CallController extends Controller
         $call = $twilio->calls
             ->create($request->input('to'), // to
                 "+1 480 526 5942", // from
-                array("url" => "http://76d61898.ngrok.io/api/callxml")
+                array("url" => "https://awconnect.herokuapp.com/api/callxml")
             );
 
         return redirect('/Contactos')->withSuccess('LLamada en curso');
@@ -69,7 +70,7 @@ class CallController extends Controller
 
     public function api()
     {
-        $response = new TwiML;
+        $response = new Twiml;
         $say = $response->say('Hola, estas contactando a Visioncc, un agente se comunicara contigo');
         $dial = $response->dial('+16194897697');
 
